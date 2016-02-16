@@ -22,7 +22,7 @@ def main():
 			R[t] += calculateR(G)
 	R = R / N_SIMS
 	r = r / N_SIMS
-	with open('result.csv', 'w') as fp:
+	with open('result.txt', 'w') as fp:
 		fp.write('t,r,R\n')
 		fp.write('\n'.join(map(lambda c: '%d,%f,%f'%(c[0],c[1],c[2]),
 			zip(range(N_STEPS+1), r, R))))
