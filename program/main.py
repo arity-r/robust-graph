@@ -10,10 +10,10 @@ N_SIMS = 100
 N_STEPS = 300
 
 def main():
-	R = np.zeros(N_STEPS+1)
+        R = np.zeros(N_STEPS+1)
 	r = np.zeros(N_STEPS+1)
 	for _ in range(N_SIMS):
-		G = nx.barabasi_albert_graph(50, 3) # initialize BA
+		G = nx.barabasi_albert_graph(500, 3) # initialize BA
 		r[0] = nx.degree_pearson_correlation_coefficient(G)
 		R[0] = calculateR(G)
 		for t in range(1, N_STEPS+1):
