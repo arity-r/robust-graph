@@ -15,3 +15,4 @@ for i in range(10):
     G = graph()
     with open('graph/graph%02d.pkl'%i, 'wb') as fp:
         pickle.dump(G, fp)
+    print('Graph %02d generated'%i)
