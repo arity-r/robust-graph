@@ -14,5 +14,5 @@ for i in range(1):
             trial = 0
             G = G0
             Rg = Rg0
-    with open('graph/graph_opt_g%02d.pkl'%i, 'wb') as fp:
+    with open('graph/graph_opt_g_%02d.pkl'%i, 'wb') as fp:
         pickle.dump(G, fp)
