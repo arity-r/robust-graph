@@ -14,8 +14,7 @@ for _ in range(1000): rewire(G2)
 print('swapping done')
 """
 N = 10
-#R0 = sum([R(G0) for _ in range(N)]) / N
-R0 = R(G0, n=10)
+R0 = R(G0, n=N)
 print(R0)
 """
 R1 = sum(p.map(R, [G1]*N)) / N

@@ -11,6 +11,7 @@ def graph(n=2000, gamma=2.5, avrdeg=4.75):
         n, my_distribution, gamma=gamma, avrdeg=avrdeg)
     return configuration_model(dict(zip(range(len(seq)), seq)))
 
-G = graph()
-with open('graph.pkl', 'wb') as fp:
-    pickle.dump(G, fp)
+for i in range(10):
+    G = graph()
+    with open('graph/graph%02d.pkl'%i, 'wb') as fp:
+        pickle.dump(G, fp)
