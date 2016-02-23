@@ -4,7 +4,7 @@ from netutil import R
 for i in range(10):
     with open('graph/graph%02d.pkl'%i, 'rb') as fp:
         G = pickle.load(fp)
-    trial = 100
+    trial = 10
     Rg = R(G, n=10)
     while trial > 0:
         trial -= 1

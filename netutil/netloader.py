@@ -1,7 +1,8 @@
-import networkx as nx
+import os.path as path, networkx as nx
+from os.path import dirname, abspath
 
 def load_us():
-    with open('USAir97.txt') as fp:
+    with open(path.join(dirname(abspath(__file__)), 'USAir97.txt')) as fp:
         contents = fp.read()
     #V, A, E = contents.split('*Vertices')
     V = contents.split('*Vertices')[1].split('*Arcs')[0].splitlines()[1:]
