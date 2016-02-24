@@ -1,7 +1,7 @@
 from __future__ import print_function, division
 from networkx import barabasi_albert_graph
 from networkx import degree_pearson_correlation_coefficient
-from netutil import R, rewire
+from robust_graph import R, preferential_rewiring
 N_STEPS = 10000
 N_SIMS = 10
 
@@ -12,8 +12,8 @@ for s in range(N_SIMS):
     Rs[0] += R(G, n=10)
     rs[0] += degree_pearson_correlation_coefficient(G)
     for t in range(1, N_STEPS+1):
-        print(t)
-        rewire(G)
+        print('sim %d step %d'%(s, t))
+        preferential_rewiring(G)
         Rs[t] += R(G, n=10)
         rs[t] += degree_pearson_correlation_coefficient(G)
 Rs = map(lambda r: r/N_SIMS, Rs)

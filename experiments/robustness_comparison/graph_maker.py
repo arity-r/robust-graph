@@ -10,15 +10,11 @@ def my_distribution(n, gamma, avrdeg):
 def graph(n=100, gamma=2.5, avrdeg=5.8):
     seq = create_degree_sequence(
         n, my_distribution, gamma=gamma, avrdeg=avrdeg)
-    print(seq)
     return configuration_model(seq)
 
 for i in range(100):
     G = graph()
     #G = barabasi_albert_graph(100, 3)
-    print(min(G.degree().values()), max(G.degree().values()))
-    """
     with open('graph/orig_%02d.pkl'%i, 'wb') as fp:
         pickle.dump(G, fp)
-    """
     print('Graph %02d generated'%i)

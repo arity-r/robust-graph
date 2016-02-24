@@ -4,6 +4,7 @@ import networkx as nx
 
 def onion_structure(deg, a=3):
     G = nx.Graph()
+    G.add_nodes_from(range(len(deg)))
     stubs = sum(map(lambda i: [i[0]]*i[1], enumerate(deg)), [])
     mindeg = min(deg)
     layer = sum(map(lambda i: [i[1]-mindeg]*i[1], enumerate(deg)), [])
@@ -11,9 +12,8 @@ def onion_structure(deg, a=3):
 
     trials = len(deg)
     prev_size = len(stubs)
-    while trials > 0 and len(stubs) > 0:
-        if prev_size == len(stubs):
-            trials -= 1
+    while trials > 0 and len(stubs) > 0 and len(G.edges()) == 0:
+        if prev_size == len(stubs): trials -= 1
         else: trials = len(deg)
         prev_size = len(stubs)
         # 0 --> vertex, 1 --> layer index
@@ -27,7 +27,13 @@ def onion_structure(deg, a=3):
             G.add_edge(i, j)
             stubs.remove((i, si))
             stubs.remove((j, sj))
-    while len(stubs) > 0:
+
+    trials = len(deg)
+    prev_size = len(stubs)
+    while trials > 0 and len(stubs) > 0:
+        if prev_size == len(stubs): trials -= 1
+        else: trials = len(deg)
+        prev_size = len(stubs)
         (i, si), (j, sj) = random.sample(stubs, 2)
         u, v = random.choice(G.edges())
         # check if same vertex
@@ -46,6 +52,7 @@ def onion_structure(deg, a=3):
             # undo
             G.add_edge(u,v)
             G.remove_edges_from([(u,i),(v,j)])
+
     return G
 
 def configuration_model(deg):
