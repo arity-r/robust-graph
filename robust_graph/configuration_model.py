@@ -12,7 +12,7 @@ def onion_structure(deg, a=3):
 
     trials = len(deg)
     prev_size = len(stubs)
-    while trials > 0 and len(stubs) > 0 and len(G.edges()) == 0:
+    while trials > 0 and len(stubs) > 0 or len(G.edges()) == 0:
         if prev_size == len(stubs): trials -= 1
         else: trials = len(deg)
         prev_size = len(stubs)
