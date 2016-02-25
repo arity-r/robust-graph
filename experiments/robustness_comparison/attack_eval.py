@@ -9,5 +9,5 @@ for i in range(100):
         G = pickle.load(fp)
     for _ in range(N_ATTACK):
         S.append(s(G))
-S = map(lambda s: s/(10*N_ATTACK), map(sum, zip(*S)))
+S = map(lambda s: s/(100*N_ATTACK), map(sum, zip(*S)))
 print('\n'.join(map(str, S)))
