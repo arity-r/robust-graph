@@ -1,6 +1,6 @@
 
 import sys, pickle
-from robust_graph import s
+from robust_graph import s, R
 
 S = []
 N_ATTACK = 100
