@@ -3,7 +3,7 @@ from networkx import barabasi_albert_graph
 from networkx import degree_pearson_correlation_coefficient
 from robust_graph import R, preferential_rewiring
 from graph_loader import load_us
-N_STEPS = 10000
+N_STEPS = 3000
 N_SIMS = 10
 
 Rs = [0 for _ in range(N_STEPS+1)]

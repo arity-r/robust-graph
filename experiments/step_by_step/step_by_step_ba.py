@@ -2,7 +2,7 @@ from __future__ import print_function, division
 from networkx import barabasi_albert_graph
 from networkx import degree_pearson_correlation_coefficient
 from robust_graph import R, preferential_rewiring
-N_STEPS = 10000
+N_STEPS = 3000
 N_SIMS = 10
 
 Rs = [0 for _ in range(N_STEPS+1)]
@@ -24,3 +24,4 @@ with open('step_ba.csv', 'w') as fp:
                         for r in zip(map(str, range(N_STEPS+1)),
                                      map(str, Rs),
                                      map(str, rs))]))
+
