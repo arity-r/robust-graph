@@ -8,7 +8,7 @@ N_SIMS = 10
 Rs = [0 for _ in range(N_STEPS+1)]
 rs = [0 for _ in range(N_STEPS+1)]
 for s in range(N_SIMS):
-    G = barabasi_albert_graph(300, 6)
+    G = barabasi_albert_graph(500, 3)
     Rs[0] += R(G, n=10)
     rs[0] += degree_pearson_correlation_coefficient(G)
     for t in range(1, N_STEPS+1):
