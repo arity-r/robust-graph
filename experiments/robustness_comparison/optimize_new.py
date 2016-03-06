@@ -1,7 +1,7 @@
 import pickle, networkx as nx
 from robust_graph import preferential_rewiring
 from robust_graph import R
-swap_num = 1000
+swap_num = 100
 
 for i in range(100):
     with open('graph/orig_%02d.pkl'%i, 'rb') as fp:
