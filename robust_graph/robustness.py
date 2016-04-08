@@ -32,7 +32,7 @@ def s(G):
                 list(filter(lambda n: n[1]==deg, deglist)))[0]
         G.remove_node(node)
         if deg == 0:
-            largest = 0
+            largest = 1
         else:
             largest = max(map(len, nx.connected_components(G)))
         S_q.append(largest / N)

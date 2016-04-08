@@ -1,0 +1,22 @@
+library(reshape2)
+library(ggplot2)
+
+# reading and formatting csv for ggplot
+data = read.csv('result.us.csv')
+xcol = head(colnames(data), n=1)
+ycol = tail(colnames(data), n=-1)
+data <- melt(data, id.vars = xcol, measure.vars = ycol)
+
+# ggplot
+ggplot(data, aes(x=t, y=value, colour=as.factor(variable))) +
+  geom_line(aes(group=variable)) +
+  #geom_smooth(se=TRUE, aes(colour=variable), size=0.5) +
+  xlab(expression(italic('swaps'))) + ylab(expression(italic('R'))) + # setting x and y labels
+  labs(colour='opt type') + # setting legend title
+  scale_colour_discrete(breaks=c('greedy', # setting order of legend
+                                 'new',
+                                 'new.greedy.ver.'),
+                        labels=c('greedy', # setting label of legend
+                                 'new',
+                                 'new (greedy ver.)')) +
+  theme(text = element_text(size=16))
