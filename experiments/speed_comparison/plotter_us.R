@@ -14,9 +14,11 @@ ggplot(data, aes(x=t, y=value, colour=as.factor(variable))) +
   xlab(expression(italic('swaps'))) + ylab(expression(italic('R'))) + # setting x and y labels
   labs(colour='opt type') + # setting legend title
   scale_colour_discrete(breaks=c('greedy', # setting order of legend
+                                 'tabu',
                                  'new',
                                  'new.greedy.ver.'),
                         labels=c('greedy', # setting label of legend
+                                 'tabu',
                                  'new',
                                  'new (greedy ver.)')) +
   theme(text = element_text(size=16))
