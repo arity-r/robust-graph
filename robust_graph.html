@@ -1,0 +1,589 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>robust_graph package &mdash; robust-graph 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="robust-graph 0.1.0 documentation" href="index.html" />
+    <link rel="up" title="robust_graph" href="modules.html" />
+    <link rel="next" title="robust_graph.algorithms package" href="robust_graph.algorithms.html" />
+    <link rel="prev" title="robust_graph" href="modules.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="robust-graph-package">
+<h1>robust_graph package<a class="headerlink" href="#robust-graph-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="robust_graph.algorithms.html">robust_graph.algorithms package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="robust_graph.algorithms.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robust_graph.algorithms.html#module-robust_graph.algorithms.ichinose_satotani">robust_graph.algorithms.ichinose_satotani module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robust_graph.algorithms.html#module-robust_graph.algorithms.schneider">robust_graph.algorithms.schneider module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robust_graph.algorithms.html#module-robust_graph.algorithms.sun">robust_graph.algorithms.sun module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robust_graph.algorithms.html#module-robust_graph.algorithms.wu_holme">robust_graph.algorithms.wu_holme module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robust_graph.algorithms.html#module-robust_graph.algorithms">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-robust_graph.log_level">
+<span id="robust-graph-log-level-module"></span><h2>robust_graph.log_level module<a class="headerlink" href="#module-robust_graph.log_level" title="Permalink to this headline">¶</a></h2>
+<p>Log levels used by <a class="reference internal" href="#robust_graph.optimizer.Optimizer" title="robust_graph.optimizer.Optimizer"><code class="xref py py-class docutils literal"><span class="pre">Optimizer</span></code></a></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="43%" />
+<col width="12%" />
+<col width="45%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Value</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">LOG_LEVEL_QUIET</span></code></td>
+<td>0</td>
+<td>suppresses all logs</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">LOG_LEVEL_ERROR</span></code></td>
+<td>2</td>
+<td>shows only error logs</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">LOG_LEVEL_WARNING</span></code></td>
+<td>3</td>
+<td>errors and warnings</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">LOG_LEVEL_DEBUG</span></code></td>
+<td>4</td>
+<td>debug information</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">LOG_LEVEL_INFO</span></code></td>
+<td>5</td>
+<td>useful information</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">LOG_LEVEL_VERBOSE</span></code></td>
+<td>7</td>
+<td>shows all things</td>
+</tr>
+</tbody>
+</table>
+<p>The log is formatted in csv:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">timestamp</span><span class="p">,</span><span class="n">loglevel</span><span class="p">,</span><span class="n">tag</span><span class="p">,</span><span class="n">message</span>
+<span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">29</span> <span class="mi">22</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">54.363486</span><span class="p">,</span><span class="n">D</span><span class="p">,</span><span class="n">IchinoseSatotani</span><span class="p">,</span><span class="n">optimizer</span> <span class="n">initialized</span> <span class="p">(</span><span class="n">graph</span><span class="o">=&lt;</span><span class="mi">7</span><span class="n">F475B625AD0</span><span class="o">&gt;</span> <span class="n">config</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;log_level&#39;</span><span class="p">:</span> <span class="s1">&#39;V&#39;</span><span class="p">})</span>
+<span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">29</span> <span class="mi">22</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">54.363755</span><span class="p">,</span><span class="n">D</span><span class="p">,</span><span class="n">IchinoseSatotani</span><span class="p">,</span><span class="n">enter</span> <span class="n">optimization</span> <span class="p">(</span><span class="n">current</span> <span class="mi">0</span> <span class="n">step</span> <span class="n">total</span> <span class="mi">2</span> <span class="n">steps</span><span class="p">)</span>
+<span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">29</span> <span class="mi">22</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">54.456545</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">IchinoseSatotani</span><span class="p">,</span><span class="n">select</span> <span class="n">edges</span> <span class="p">(</span><span class="mi">9</span> <span class="mi">58</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="mi">9</span> <span class="mi">83</span><span class="p">)</span> <span class="p">(</span><span class="n">k</span> <span class="o">=</span> <span class="p">(</span><span class="mi">55</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">55</span> <span class="mi">3</span><span class="p">))</span>
+<span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">29</span> <span class="mi">22</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">54.469002</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">IchinoseSatotani</span><span class="p">,</span><span class="n">select</span> <span class="n">edges</span> <span class="p">(</span><span class="mi">28</span> <span class="mi">68</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="mi">9</span> <span class="mi">17</span><span class="p">)</span> <span class="p">(</span><span class="n">k</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">55</span> <span class="mi">5</span><span class="p">))</span>
+<span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">29</span> <span class="mi">22</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">54.484720</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">IchinoseSatotani</span><span class="p">,</span><span class="n">select</span> <span class="n">edges</span> <span class="p">(</span><span class="mi">9</span> <span class="mi">42</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="mi">9</span> <span class="mi">29</span><span class="p">)</span> <span class="p">(</span><span class="n">k</span> <span class="o">=</span> <span class="p">(</span><span class="mi">55</span> <span class="mi">7</span><span class="p">)</span> <span class="p">(</span><span class="mi">55</span> <span class="mi">3</span><span class="p">))</span>
+<span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">29</span> <span class="mi">22</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">54.497236</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">IchinoseSatotani</span><span class="p">,</span><span class="n">select</span> <span class="n">edges</span> <span class="p">(</span><span class="mi">9</span> <span class="mi">57</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="mi">9</span> <span class="mi">18</span><span class="p">)</span> <span class="p">(</span><span class="n">k</span> <span class="o">=</span> <span class="p">(</span><span class="mi">55</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="mi">55</span> <span class="mi">4</span><span class="p">))</span>
+<span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">29</span> <span class="mi">22</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">54.509615</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">IchinoseSatotani</span><span class="p">,</span><span class="n">select</span> <span class="n">edges</span> <span class="p">(</span><span class="mi">9</span> <span class="mi">69</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="mi">9</span> <span class="mi">12</span><span class="p">)</span> <span class="p">(</span><span class="n">k</span> <span class="o">=</span> <span class="p">(</span><span class="mi">55</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="mi">55</span> <span class="mi">4</span><span class="p">))</span>
+<span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">29</span> <span class="mi">22</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">54.521980</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">IchinoseSatotani</span><span class="p">,</span><span class="n">select</span> <span class="n">edges</span> <span class="p">(</span><span class="mi">9</span> <span class="mi">84</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="mi">9</span> <span class="mi">79</span><span class="p">)</span> <span class="p">(</span><span class="n">k</span> <span class="o">=</span> <span class="p">(</span><span class="mi">55</span> <span class="mi">8</span><span class="p">)</span> <span class="p">(</span><span class="mi">55</span> <span class="mi">3</span><span class="p">))</span>
+<span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">29</span> <span class="mi">22</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">54.538531</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">IchinoseSatotani</span><span class="p">,</span><span class="n">select</span> <span class="n">edges</span> <span class="p">(</span><span class="mi">48</span> <span class="mi">55</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="mi">3</span> <span class="mi">9</span><span class="p">)</span> <span class="p">(</span><span class="n">k</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span> <span class="mi">11</span><span class="p">)</span> <span class="p">(</span><span class="mi">11</span> <span class="mi">55</span><span class="p">))</span>
+<span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">29</span> <span class="mi">22</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">54.550602</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">IchinoseSatotani</span><span class="p">,</span><span class="n">select</span> <span class="n">edges</span> <span class="p">(</span><span class="mi">9</span> <span class="mi">56</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="mi">39</span> <span class="mi">95</span><span class="p">)</span> <span class="p">(</span><span class="n">k</span> <span class="o">=</span> <span class="p">(</span><span class="mi">55</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">23</span> <span class="mi">3</span><span class="p">))</span>
+<span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">29</span> <span class="mi">22</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">54.562486</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">IchinoseSatotani</span><span class="p">,</span><span class="n">select</span> <span class="n">edges</span> <span class="p">(</span><span class="mi">9</span> <span class="mi">51</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="mi">58</span> <span class="mi">63</span><span class="p">)</span> <span class="p">(</span><span class="n">k</span> <span class="o">=</span> <span class="p">(</span><span class="mi">55</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">4</span> <span class="mi">6</span><span class="p">))</span>
+<span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">29</span> <span class="mi">22</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">54.574546</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">IchinoseSatotani</span><span class="p">,</span><span class="n">select</span> <span class="n">edges</span> <span class="p">(</span><span class="mi">9</span> <span class="mi">12</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="mi">39</span> <span class="mi">42</span><span class="p">)</span> <span class="p">(</span><span class="n">k</span> <span class="o">=</span> <span class="p">(</span><span class="mi">55</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">23</span> <span class="mi">7</span><span class="p">))</span>
+<span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">29</span> <span class="mi">22</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">54.586598</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">IchinoseSatotani</span><span class="p">,</span><span class="n">select</span> <span class="n">edges</span> <span class="p">(</span><span class="mi">9</span> <span class="mi">64</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="mi">9</span> <span class="mi">39</span><span class="p">)</span> <span class="p">(</span><span class="n">k</span> <span class="o">=</span> <span class="p">(</span><span class="mi">55</span> <span class="mi">13</span><span class="p">)</span> <span class="p">(</span><span class="mi">55</span> <span class="mi">23</span><span class="p">))</span>
+<span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">29</span> <span class="mi">22</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">54.600107</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">IchinoseSatotani</span><span class="p">,</span><span class="n">select</span> <span class="n">edges</span> <span class="p">(</span><span class="mi">9</span> <span class="mi">64</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="mi">9</span> <span class="mi">64</span><span class="p">)</span> <span class="p">(</span><span class="n">k</span> <span class="o">=</span> <span class="p">(</span><span class="mi">55</span> <span class="mi">13</span><span class="p">)</span> <span class="p">(</span><span class="mi">55</span> <span class="mi">13</span><span class="p">))</span>
+<span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">29</span> <span class="mi">22</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">54.612631</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">IchinoseSatotani</span><span class="p">,</span><span class="n">select</span> <span class="n">edges</span> <span class="p">(</span><span class="mi">9</span> <span class="mi">18</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="mi">9</span> <span class="mi">22</span><span class="p">)</span> <span class="p">(</span><span class="n">k</span> <span class="o">=</span> <span class="p">(</span><span class="mi">55</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">55</span> <span class="mi">2</span><span class="p">))</span>
+<span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">29</span> <span class="mi">22</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">54.624887</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">IchinoseSatotani</span><span class="p">,</span><span class="n">select</span> <span class="n">edges</span> <span class="p">(</span><span class="mi">9</span> <span class="mi">26</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="mi">3</span> <span class="mi">9</span><span class="p">)</span> <span class="p">(</span><span class="n">k</span> <span class="o">=</span> <span class="p">(</span><span class="mi">55</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="mi">11</span> <span class="mi">55</span><span class="p">))</span>
+<span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">29</span> <span class="mi">22</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">54.640989</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">IchinoseSatotani</span><span class="p">,</span><span class="n">select</span> <span class="n">edges</span> <span class="p">(</span><span class="mi">9</span> <span class="mi">53</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="mi">84</span> <span class="mi">87</span><span class="p">)</span> <span class="p">(</span><span class="n">k</span> <span class="o">=</span> <span class="p">(</span><span class="mi">55</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="mi">8</span> <span class="mi">4</span><span class="p">))</span>
+<span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">29</span> <span class="mi">22</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">54.653399</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">IchinoseSatotani</span><span class="p">,</span><span class="n">select</span> <span class="n">edges</span> <span class="p">(</span><span class="mi">27</span> <span class="mi">39</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="mi">9</span> <span class="mi">39</span><span class="p">)</span> <span class="p">(</span><span class="n">k</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span> <span class="mi">23</span><span class="p">)</span> <span class="p">(</span><span class="mi">55</span> <span class="mi">23</span><span class="p">))</span>
+<span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">29</span> <span class="mi">22</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">54.665908</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">IchinoseSatotani</span><span class="p">,</span><span class="n">select</span> <span class="n">edges</span> <span class="p">(</span><span class="mi">9</span> <span class="mi">37</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="mi">25</span> <span class="mi">86</span><span class="p">)</span> <span class="p">(</span><span class="n">k</span> <span class="o">=</span> <span class="p">(</span><span class="mi">55</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">14</span> <span class="mi">5</span><span class="p">))</span>
+<span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">29</span> <span class="mi">22</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">54.678271</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">IchinoseSatotani</span><span class="p">,</span><span class="n">select</span> <span class="n">edges</span> <span class="p">(</span><span class="mi">9</span> <span class="mi">18</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="mi">9</span> <span class="mi">21</span><span class="p">)</span> <span class="p">(</span><span class="n">k</span> <span class="o">=</span> <span class="p">(</span><span class="mi">55</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">55</span> <span class="mi">3</span><span class="p">))</span>
+<span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">29</span> <span class="mi">22</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">54.690589</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">IchinoseSatotani</span><span class="p">,</span><span class="n">select</span> <span class="n">edges</span> <span class="p">(</span><span class="mi">9</span> <span class="mi">62</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="mi">9</span> <span class="mi">18</span><span class="p">)</span> <span class="p">(</span><span class="n">k</span> <span class="o">=</span> <span class="p">(</span><span class="mi">55</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="mi">55</span> <span class="mi">4</span><span class="p">))</span>
+<span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">29</span> <span class="mi">22</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">54.702918</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">IchinoseSatotani</span><span class="p">,</span><span class="n">select</span> <span class="n">edges</span> <span class="p">(</span><span class="mi">42</span> <span class="mi">54</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="mi">28</span> <span class="mi">82</span><span class="p">)</span> <span class="p">(</span><span class="n">k</span> <span class="o">=</span> <span class="p">(</span><span class="mi">7</span> <span class="mi">11</span><span class="p">)</span> <span class="p">(</span><span class="mi">10</span> <span class="mi">3</span><span class="p">))</span>
+<span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">29</span> <span class="mi">22</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">54.703237</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">IchinoseSatotani</span><span class="p">,</span><span class="n">swap</span> <span class="n">edges</span> <span class="p">(</span><span class="mi">42</span> <span class="mi">54</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="mi">28</span> <span class="mi">82</span><span class="p">)</span>
+<span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">29</span> <span class="mi">22</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">54.764395</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">IchinoseSatotani</span><span class="p">,</span><span class="n">optimize</span> <span class="n">success</span> <span class="n">R</span> <span class="o">=</span> <span class="mf">0.202100</span> <span class="o">-&gt;</span> <span class="mf">0.203600</span> <span class="n">after</span> <span class="mi">20</span> <span class="n">trials</span>
+<span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">29</span> <span class="mi">22</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">54.889305</span><span class="p">,</span><span class="n">I</span><span class="p">,</span><span class="n">IchinoseSatotani</span><span class="p">,</span><span class="n">update</span> <span class="n">robustness</span> <span class="mf">0.196500</span> <span class="o">-&gt;</span> <span class="mf">0.199500</span> <span class="n">at</span> <span class="mi">0</span> <span class="n">step</span>
+<span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">29</span> <span class="mi">22</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">54.968138</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">IchinoseSatotani</span><span class="p">,</span><span class="n">select</span> <span class="n">edges</span> <span class="p">(</span><span class="mi">9</span> <span class="mi">77</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="mi">7</span> <span class="mi">80</span><span class="p">)</span> <span class="p">(</span><span class="n">k</span> <span class="o">=</span> <span class="p">(</span><span class="mi">55</span> <span class="mi">12</span><span class="p">)</span> <span class="p">(</span><span class="mi">3</span> <span class="mi">7</span><span class="p">))</span>
+<span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">29</span> <span class="mi">22</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">54.968564</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">IchinoseSatotani</span><span class="p">,</span><span class="n">swap</span> <span class="n">edges</span> <span class="p">(</span><span class="mi">9</span> <span class="mi">77</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="mi">7</span> <span class="mi">80</span><span class="p">)</span>
+<span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">29</span> <span class="mi">22</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">55.026764</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">IchinoseSatotani</span><span class="p">,</span><span class="n">optimize</span> <span class="n">success</span> <span class="n">R</span> <span class="o">=</span> <span class="mf">0.205300</span> <span class="o">-&gt;</span> <span class="mf">0.202900</span> <span class="n">after</span> <span class="mi">1</span> <span class="n">trials</span>
+<span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">29</span> <span class="mi">22</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">55.149647</span><span class="p">,</span><span class="n">I</span><span class="p">,</span><span class="n">IchinoseSatotani</span><span class="p">,</span><span class="n">update</span> <span class="n">robustness</span> <span class="mf">0.205300</span> <span class="o">-&gt;</span> <span class="mf">0.197600</span> <span class="n">at</span> <span class="mi">1</span> <span class="n">step</span>
+<span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">29</span> <span class="mi">22</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">55.150018</span><span class="p">,</span><span class="n">D</span><span class="p">,</span><span class="n">IchinoseSatotani</span><span class="p">,</span><span class="n">exit</span> <span class="n">optimization</span> <span class="p">(</span><span class="n">current</span> <span class="mi">2</span> <span class="n">step</span> <span class="n">total</span> <span class="mi">2</span> <span class="n">steps</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="function">
+<dt id="robust_graph.log_level.print_log_header">
+<code class="descclassname">robust_graph.log_level.</code><code class="descname">print_log_header</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/robust_graph/log_level.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.log_level.print_log_header" title="Permalink to this definition">¶</a></dt>
+<dd><p>shows header row:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">timestamp</span><span class="p">,</span><span class="n">loglevel</span><span class="p">,</span><span class="n">tag</span><span class="p">,</span><span class="n">message</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="module-robust_graph.optimizer">
+<span id="robust-graph-optimizer-module"></span><h2>robust_graph.optimizer module<a class="headerlink" href="#module-robust_graph.optimizer" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="robust_graph.optimizer.Optimizer">
+<em class="property">class </em><code class="descclassname">robust_graph.optimizer.</code><code class="descname">Optimizer</code><span class="sig-paren">(</span><em>graph</em>, <em>log_level=0</em>, <em>force_update=True</em>, <em>**config</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/robust_graph/optimizer.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.optimizer.Optimizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Abstract class of robust-optimize algorithm</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>graph</strong> (<a class="reference external" href="http://networkx.github.io/documentation/networkx-1.9.1/reference/classes.graph.html#networkx.Graph" title="(in NetworkX v1.9.1)"><em>networkx.Graph</em></a>) &#8211; Graph to be optimized</li>
+<li><strong>log_level</strong> (<em>int</em>) &#8211; Log level defined in <code class="xref py py-mod docutils literal"><span class="pre">robust_graph.optimize.log_level</span></code></li>
+<li><strong>force_update</strong> (<em>bool</em>) &#8211; If True, accept update even if <a class="reference internal" href="#robust_graph.optimizer.Optimizer._update_one_step" title="robust_graph.optimizer.Optimizer._update_one_step"><code class="xref py py-func docutils literal"><span class="pre">_update_one_step()</span></code></a> claims imcomplete result</li>
+<li><strong>config</strong> (<em>dict</em>) &#8211; Optional parameters on subclass</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="robust_graph.optimizer.Optimizer._update_one_step">
+<code class="descname">_update_one_step</code><span class="sig-paren">(</span><em>graph</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/robust_graph/optimizer.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.optimizer.Optimizer._update_one_step" title="Permalink to this definition">¶</a></dt>
+<dd><p>Optimize(update) robustness only one step.
+This function is not implemented and overwrite it in subclass.</p>
+<p>This function must return a 2-element tuple that has:</p>
+<ol class="arabic simple">
+<li>represents wheather this update is complete or not</li>
+<li>optimized graph</li>
+</ol>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>graph</strong> (<a class="reference external" href="http://networkx.github.io/documentation/networkx-1.9.1/reference/classes.graph.html#networkx.Graph" title="(in NetworkX v1.9.1)"><em>networkx.Graph</em></a>) &#8211; Graph to be optimized</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Tuple described as above</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">tuple</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="robust_graph.optimizer.Optimizer.current_graph">
+<code class="descname">current_graph</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/robust_graph/optimizer.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.optimizer.Optimizer.current_graph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a deep copy of graph which this optimizer holds currently.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Current graph of optimizer</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="http://networkx.github.io/documentation/networkx-1.9.1/reference/classes.graph.html#networkx.Graph" title="(in NetworkX v1.9.1)">networkx.Graph</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="robust_graph.optimizer.Optimizer.current_step">
+<code class="descname">current_step</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/robust_graph/optimizer.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.optimizer.Optimizer.current_step" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of current steps.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Current step</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="robust_graph.optimizer.Optimizer.optimize">
+<code class="descname">optimize</code><span class="sig-paren">(</span><em>steps=1</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/robust_graph/optimizer.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.optimizer.Optimizer.optimize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Optimize robustness of graph.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>steps</strong> (<em>int</em>) &#8211; The number of optimize steps</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Optimized graph in robustness</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="http://networkx.github.io/documentation/networkx-1.9.1/reference/classes.graph.html#networkx.Graph" title="(in NetworkX v1.9.1)">networkx.Graph</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-robust_graph.robustness">
+<span id="robust-graph-robustness-module"></span><h2>robust_graph.robustness module<a class="headerlink" href="#module-robust_graph.robustness" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="robust_graph.robustness.R">
+<code class="descclassname">robust_graph.robustness.</code><code class="descname">R</code><span class="sig-paren">(</span><em>G</em>, <em>n=1</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/robust_graph/robustness.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.robustness.R" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes network robustness in <a class="reference internal" href="index.html#schneider2011" id="id1">[SMA+11]</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>G</strong> (<a class="reference external" href="http://networkx.github.io/documentation/networkx-1.9.1/reference/classes.graph.html#networkx.Graph" title="(in NetworkX v1.9.1)"><em>networkx.Graph</em></a>) &#8211; The graph</li>
+<li><strong>n</strong> (<em>int</em>) &#8211; The number of iteration, increase to accurate result.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="robust_graph.robustness.s">
+<code class="descclassname">robust_graph.robustness.</code><code class="descname">s</code><span class="sig-paren">(</span><em>G</em>, <em>n=1</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/robust_graph/robustness.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.robustness.s" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes network robustness in <a class="reference internal" href="index.html#schneider2011" id="id2">[SMA+11]</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>G</strong> (<a class="reference external" href="http://networkx.github.io/documentation/networkx-1.9.1/reference/classes.graph.html#networkx.Graph" title="(in NetworkX v1.9.1)"><em>networkx.Graph</em></a>) &#8211; The graph</li>
+<li><strong>n</strong> (<em>int</em>) &#8211; The number of iteration, increase to accurate result.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-robust_graph.time_tracker">
+<span id="robust-graph-time-tracker-module"></span><h2>robust_graph.time_tracker module<a class="headerlink" href="#module-robust_graph.time_tracker" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="robust_graph.time_tracker.TimeTracker">
+<em class="property">class </em><code class="descclassname">robust_graph.time_tracker.</code><code class="descname">TimeTracker</code><span class="sig-paren">(</span><em>opt_class</em>, <em>graph</em>, <em>cols=[]</em>, <em>**config</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/robust_graph/time_tracker.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.time_tracker.TimeTracker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>TimeTracker constructor</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>opt_class</strong> (<a class="reference internal" href="#robust_graph.optimizer.Optimizer" title="robust_graph.optimizer.Optimizer"><em>Optimizer</em></a>) &#8211; Optimization algorithm</li>
+<li><strong>graph</strong> (<a class="reference external" href="http://networkx.github.io/documentation/networkx-1.9.1/reference/classes.graph.html#networkx.Graph" title="(in NetworkX v1.9.1)"><em>networkx.Graph</em></a>) &#8211; Graph to be optimized</li>
+<li><strong>cols</strong> (<em>list-of-tuple</em>) &#8211; List of column name and function(graph -&gt; double)</li>
+<li><strong>config</strong> (<em>dict</em>) &#8211; Optional parameters for optimizer</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="robust_graph.time_tracker.TimeTracker.current_graph">
+<code class="descname">current_graph</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/robust_graph/time_tracker.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.time_tracker.TimeTracker.current_graph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a deep copy of graph which this tracker holds currently.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Current graph of tracker</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="http://networkx.github.io/documentation/networkx-1.9.1/reference/classes.graph.html#networkx.Graph" title="(in NetworkX v1.9.1)">networkx.Graph</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="robust_graph.time_tracker.TimeTracker.current_step">
+<code class="descname">current_step</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/robust_graph/time_tracker.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.time_tracker.TimeTracker.current_step" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of current steps.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Current step</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="robust_graph.time_tracker.TimeTracker.dump">
+<code class="descname">dump</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/robust_graph/time_tracker.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.time_tracker.TimeTracker.dump" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dump result to file as csv format</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> (<em>str</em>) &#8211; Filename</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="robust_graph.time_tracker.TimeTracker.dumps">
+<code class="descname">dumps</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/robust_graph/time_tracker.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.time_tracker.TimeTracker.dumps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dump result as a csv string.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Tracking result in csv format</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="robust_graph.time_tracker.TimeTracker.rawdata">
+<code class="descname">rawdata</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/robust_graph/time_tracker.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.time_tracker.TimeTracker.rawdata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Obtain tracker result as a dictionary</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Dictionary (key = column names, values = column data)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="robust_graph.time_tracker.TimeTracker.track">
+<code class="descname">track</code><span class="sig-paren">(</span><em>steps</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/robust_graph/time_tracker.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.time_tracker.TimeTracker.track" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run simulation on <a class="reference internal" href="#robust_graph.optimizer.Optimizer" title="robust_graph.optimizer.Optimizer"><code class="xref py py-class docutils literal"><span class="pre">Optimizer</span></code></a> and store results on every steps.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>steps</strong> (<em>int</em>) &#8211; Simulation step on <a class="reference internal" href="#robust_graph.optimizer.Optimizer" title="robust_graph.optimizer.Optimizer"><code class="xref py py-class docutils literal"><span class="pre">Optimizer</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-robust_graph.util">
+<span id="robust-graph-util-module"></span><h2>robust_graph.util module<a class="headerlink" href="#module-robust_graph.util" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="robust_graph.util.load_us">
+<code class="descclassname">robust_graph.util.</code><code class="descname">load_us</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/robust_graph/util.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.util.load_us" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load US airline network.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">US Airline network</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="http://networkx.github.io/documentation/networkx-1.9.1/reference/classes.graph.html#networkx.Graph" title="(in NetworkX v1.9.1)">networkx.Graph</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="robust_graph.util.onion_layout">
+<code class="descclassname">robust_graph.util.</code><code class="descname">onion_layout</code><span class="sig-paren">(</span><em>G</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/robust_graph/util.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.util.onion_layout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find node positions for onion-like topology</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>G</strong> (<a class="reference external" href="http://networkx.github.io/documentation/networkx-1.9.1/reference/classes.graph.html#networkx.Graph" title="(in NetworkX v1.9.1)"><em>networkx.Graph</em></a>) &#8211; Graph</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Position dictionary in networkx</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="robust_graph.util.powerlaw_sequence">
+<code class="descclassname">robust_graph.util.</code><code class="descname">powerlaw_sequence</code><span class="sig-paren">(</span><em>n</em>, <em>gamma</em>, <em>avrdeg</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/robust_graph/util.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.util.powerlaw_sequence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate power-law degree sequence by pareto distribution.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>n</strong> (<em>int</em>) &#8211; The number of nodes</li>
+<li><strong>gamma</strong> (<em>float</em>) &#8211; Exponent of distribution</li>
+<li><strong>avrdeg</strong> (<em>float</em>) &#8211; Average degree</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Degree distribution</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="robust_graph.util.save_graph_as_image">
+<code class="descclassname">robust_graph.util.</code><code class="descname">save_graph_as_image</code><span class="sig-paren">(</span><em>G</em>, <em>filename</em>, <em>layout=&lt;function onion_layout&gt;</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/robust_graph/util.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.util.save_graph_as_image" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save given graph as image.
+Node colors represent each degree of its node.
+Edges are shown as solid line if degrees of
+two incident nodes are same, otherwise, dash.</p>
+<img alt="_images/draw_sample.png" src="_images/draw_sample.png" />
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>G</strong> (<a class="reference external" href="http://networkx.github.io/documentation/networkx-1.9.1/reference/classes.graph.html#networkx.Graph" title="(in NetworkX v1.9.1)"><em>networkx.Graph</em></a>) &#8211; Graph</li>
+<li><strong>filename</strong> (<em>str</em>) &#8211; filename</li>
+<li><strong>function</strong> (<em>layout</em>) &#8211; function returns position dictionary</li>
+<li><strong>dict</strong> (<em>kwargs</em>) &#8211; to pass to layout function</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="robust_graph.util.scale_free_network">
+<code class="descclassname">robust_graph.util.</code><code class="descname">scale_free_network</code><span class="sig-paren">(</span><em>n=100</em>, <em>gamma=2.5</em>, <em>avrdeg=8</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/robust_graph/util.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.util.scale_free_network" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a scale free network by configuration model,
+which is shown in [Wu2011]</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>n</strong> (<em>int</em>) &#8211; The number of nodes</li>
+<li><strong>gamma</strong> (<em>float</em>) &#8211; Exponent of degree distribution</li>
+<li><strong>avrdeg</strong> (<em>float</em>) &#8211; Average degree</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Scale-free network</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="http://networkx.github.io/documentation/networkx-1.9.1/reference/classes.graph.html#networkx.Graph" title="(in NetworkX v1.9.1)">networkx.Graph</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Generates degree sequence from calling
+<a class="reference internal" href="#robust_graph.util.powerlaw_sequence" title="robust_graph.util.powerlaw_sequence"><code class="xref py py-func docutils literal"><span class="pre">powerlaw_sequence()</span></code></a> and
+<a class="reference external" href="http://networkx.github.io/documentation/networkx-1.9.1/reference/generated/networkx.utils.random_sequence.create_degree_sequence.html#networkx.utils.random_sequence.create_degree_sequence" title="(in NetworkX v1.9.1)"><code class="xref py py-func docutils literal"><span class="pre">networkx.utils.random_sequence.create_degree_sequence()</span></code></a>
+then, build network by configuration model
+(see <a class="reference external" href="http://networkx.github.io/documentation/networkx-1.9.1/reference/generated/networkx.generators.degree_seq.configuration_model.html#networkx.generators.degree_seq.configuration_model" title="(in NetworkX v1.9.1)"><code class="xref py py-func docutils literal"><span class="pre">networkx.generators.degree_seq.configuration_model()</span></code></a>)
+finally, remove self-loop and parallel edge to simplify.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Actual average degree is smaller than <cite>avrdeg</cite></p>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="module-robust_graph">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-robust_graph" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">robust_graph package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-robust_graph.log_level">robust_graph.log_level module</a></li>
+<li><a class="reference internal" href="#module-robust_graph.optimizer">robust_graph.optimizer module</a></li>
+<li><a class="reference internal" href="#module-robust_graph.robustness">robust_graph.robustness module</a></li>
+<li><a class="reference internal" href="#module-robust_graph.time_tracker">robust_graph.time_tracker module</a></li>
+<li><a class="reference internal" href="#module-robust_graph.util">robust_graph.util module</a></li>
+<li><a class="reference internal" href="#module-robust_graph">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">robust_graph</a><ul>
+      <li>Previous: <a href="modules.html" title="previous chapter">robust_graph</a></li>
+      <li>Next: <a href="robust_graph.algorithms.html" title="next chapter">robust_graph.algorithms package</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      
+      
+      
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

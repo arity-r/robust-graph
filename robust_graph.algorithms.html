@@ -1,0 +1,236 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>robust_graph.algorithms package &mdash; robust-graph 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="robust-graph 0.1.0 documentation" href="index.html" />
+    <link rel="up" title="robust_graph package" href="robust_graph.html" />
+    <link rel="prev" title="robust_graph package" href="robust_graph.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="robust-graph-algorithms-package">
+<h1>robust_graph.algorithms package<a class="headerlink" href="#robust-graph-algorithms-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-robust_graph.algorithms.ichinose_satotani">
+<span id="robust-graph-algorithms-ichinose-satotani-module"></span><h2>robust_graph.algorithms.ichinose_satotani module<a class="headerlink" href="#module-robust_graph.algorithms.ichinose_satotani" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="robust_graph.algorithms.ichinose_satotani.IchinoseSatotani">
+<em class="property">class </em><code class="descclassname">robust_graph.algorithms.ichinose_satotani.</code><code class="descname">IchinoseSatotani</code><span class="sig-paren">(</span><em>graph</em>, <em>log_level=0</em>, <em>force_update=True</em>, <em>max_trials=100</em>, <em>greedy=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/robust_graph/algorithms/ichinose_satotani.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.algorithms.ichinose_satotani.IchinoseSatotani" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="robust_graph.html#robust_graph.optimizer.Optimizer" title="robust_graph.optimizer.Optimizer"><code class="xref py py-class docutils literal"><span class="pre">robust_graph.optimizer.Optimizer</span></code></a></p>
+<p>Improve network robustness with degree correlation</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>graph</strong> (<a class="reference external" href="http://networkx.github.io/documentation/networkx-1.9.1/reference/classes.graph.html#networkx.Graph" title="(in NetworkX v1.9.1)"><em>networkx.Graph</em></a>) &#8211; Graph to be optimized</li>
+<li><strong>log_level</strong> (<em>int</em>) &#8211; Log level defined in <code class="xref py py-mod docutils literal"><span class="pre">robust_graph.optimize.log_level</span></code></li>
+<li><strong>force_update</strong> (<em>bool</em>) &#8211; If True, accept update even if <code class="xref py py-func docutils literal"><span class="pre">_update_one_step()</span></code> claims imcomplete result</li>
+<li><strong>max_trials</strong> (<em>int</em>) &#8211; The maximum number of trials for swapping</li>
+<li><strong>greedy</strong> (<em>bool</em>) &#8211; Choose higher degree correlation swap</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-robust_graph.algorithms.schneider">
+<span id="robust-graph-algorithms-schneider-module"></span><h2>robust_graph.algorithms.schneider module<a class="headerlink" href="#module-robust_graph.algorithms.schneider" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="robust_graph.algorithms.schneider.Schneider">
+<em class="property">class </em><code class="descclassname">robust_graph.algorithms.schneider.</code><code class="descname">Schneider</code><span class="sig-paren">(</span><em>graph</em>, <em>log_level=0</em>, <em>force_update=True</em>, <em>max_trials=100</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/robust_graph/algorithms/schneider.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.algorithms.schneider.Schneider" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="robust_graph.html#robust_graph.optimizer.Optimizer" title="robust_graph.optimizer.Optimizer"><code class="xref py py-class docutils literal"><span class="pre">robust_graph.optimizer.Optimizer</span></code></a></p>
+<p>Improve network robustness by comparing R
+<a class="reference internal" href="index.html#schneider2011" id="id1">[SMA+11]</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>graph</strong> (<a class="reference external" href="http://networkx.github.io/documentation/networkx-1.9.1/reference/classes.graph.html#networkx.Graph" title="(in NetworkX v1.9.1)"><em>networkx.Graph</em></a>) &#8211; Graph to be optimized</li>
+<li><strong>log_level</strong> (<em>int</em>) &#8211; Log level defined in
+<code class="xref py py-mod docutils literal"><span class="pre">robust_graph.optimize.log_level</span></code></li>
+<li><strong>force_update</strong> (<em>bool</em>) &#8211; If True, accept update
+even if <code class="xref py py-func docutils literal"><span class="pre">_update_one_step()</span></code> claims imcomplete result</li>
+<li><strong>max_trials</strong> (<em>int</em>) &#8211; The maximum number of trials for swapping</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-robust_graph.algorithms.sun">
+<span id="robust-graph-algorithms-sun-module"></span><h2>robust_graph.algorithms.sun module<a class="headerlink" href="#module-robust_graph.algorithms.sun" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="robust_graph.algorithms.sun.Sun">
+<em class="property">class </em><code class="descclassname">robust_graph.algorithms.sun.</code><code class="descname">Sun</code><span class="sig-paren">(</span><em>graph</em>, <em>log_level=0</em>, <em>force_update=True</em>, <em>max_trials=1000</em>, <em>Ng=10</em>, <em>Nt=6</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/robust_graph/algorithms/sun.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.algorithms.sun.Sun" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="robust_graph.html#robust_graph.optimizer.Optimizer" title="robust_graph.optimizer.Optimizer"><code class="xref py py-class docutils literal"><span class="pre">robust_graph.optimizer.Optimizer</span></code></a></p>
+<p>Improve network robustness with tabu search
+<a class="reference internal" href="index.html#sun2016" id="id2">[SML+16]</a></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The result from this algorithm may not accord to <a class="reference internal" href="index.html#sun2016" id="id3">[SML+16]</a>.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>graph</strong> (<a class="reference external" href="http://networkx.github.io/documentation/networkx-1.9.1/reference/classes.graph.html#networkx.Graph" title="(in NetworkX v1.9.1)"><em>networkx.Graph</em></a>) &#8211; Graph to be optimized</li>
+<li><strong>log_level</strong> (<em>int</em>) &#8211; Log level defined in
+<code class="xref py py-mod docutils literal"><span class="pre">robust_graph.optimize.log_level</span></code></li>
+<li><strong>force_update</strong> (<em>bool</em>) &#8211; If True, iterates <code class="docutils literal"><span class="pre">max_trials</span></code> times,
+if False, continue until Gc gain a swap (updates Gc Nt times)</li>
+<li><strong>max_trials</strong> (<em>int</em>) &#8211; The number of iteration
+(Only works <code class="docutils literal"><span class="pre">force_udpate==True</span></code>)</li>
+<li><strong>Ng</strong> (<em>int</em>) &#8211; The number of neighbor solutions</li>
+<li><strong>Nt</strong> (<em>int</em>) &#8211; Length of tabu list</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-robust_graph.algorithms.wu_holme">
+<span id="robust-graph-algorithms-wu-holme-module"></span><h2>robust_graph.algorithms.wu_holme module<a class="headerlink" href="#module-robust_graph.algorithms.wu_holme" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="robust_graph.algorithms.wu_holme.WuHolme">
+<em class="property">class </em><code class="descclassname">robust_graph.algorithms.wu_holme.</code><code class="descname">WuHolme</code><span class="sig-paren">(</span><em>graph</em>, <em>log_level=0</em>, <em>force_update=True</em>, <em>max_trials=100</em>, <em>a=3</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/robust_graph/algorithms/wu_holme.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.algorithms.wu_holme.WuHolme" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="robust_graph.html#robust_graph.optimizer.Optimizer" title="robust_graph.optimizer.Optimizer"><code class="xref py py-class docutils literal"><span class="pre">robust_graph.optimizer.Optimizer</span></code></a></p>
+<p>Algorithm based on configuration model
+<a class="reference internal" href="index.html#holme2002" id="id4">[HKYH02]</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>graph</strong> (<a class="reference external" href="http://networkx.github.io/documentation/networkx-1.9.1/reference/classes.graph.html#networkx.Graph" title="(in NetworkX v1.9.1)"><em>networkx.Graph</em></a>) &#8211; Graph to be optimized</li>
+<li><strong>log_level</strong> (<em>int</em>) &#8211; Log level defined in
+<code class="xref py py-mod docutils literal"><span class="pre">robust_graph.optimize.log_level</span></code></li>
+<li><strong>force_update</strong> (<em>bool</em>) &#8211; Ignored</li>
+<li><strong>max_trials</strong> (<em>int</em>) &#8211; The maximum number of trials for swapping</li>
+<li><strong>a</strong> (<em>int</em>) &#8211; Parameter in <a class="reference internal" href="index.html#holme2002" id="id5">[HKYH02]</a></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="robust_graph.algorithms.wu_holme.WuHolme.optimize">
+<code class="descname">optimize</code><span class="sig-paren">(</span><em>steps=1</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/robust_graph/algorithms/wu_holme.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.algorithms.wu_holme.WuHolme.optimize" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>steps</strong> (<em>int</em>) &#8211; Ignored</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-robust_graph.algorithms">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-robust_graph.algorithms" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">robust_graph.algorithms package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-robust_graph.algorithms.ichinose_satotani">robust_graph.algorithms.ichinose_satotani module</a></li>
+<li><a class="reference internal" href="#module-robust_graph.algorithms.schneider">robust_graph.algorithms.schneider module</a></li>
+<li><a class="reference internal" href="#module-robust_graph.algorithms.sun">robust_graph.algorithms.sun module</a></li>
+<li><a class="reference internal" href="#module-robust_graph.algorithms.wu_holme">robust_graph.algorithms.wu_holme module</a></li>
+<li><a class="reference internal" href="#module-robust_graph.algorithms">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">robust_graph</a><ul>
+  <li><a href="robust_graph.html">robust_graph package</a><ul>
+      <li>Previous: <a href="robust_graph.html" title="previous chapter">robust_graph package</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      
+      
+      
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

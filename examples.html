@@ -1,0 +1,521 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Examples &mdash; robust-graph 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="robust-graph 0.1.0 documentation" href="index.html" />
+    <link rel="next" title="robust_graph" href="modules.html" />
+    <link rel="prev" title="Algorithms" href="algorithms.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="examples">
+<h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="robustness-comparison">
+<h2>Robustness Comparison<a class="headerlink" href="#robustness-comparison" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+
+<span class="kn">from</span> <span class="nn">robust_graph</span> <span class="k">import</span> <span class="n">LOG_LEVEL_INFO</span> <span class="k">as</span> <span class="n">LOG_LEVEL</span>
+
+<span class="c1"># s robustness</span>
+<span class="kn">from</span> <span class="nn">robust_graph</span> <span class="k">import</span> <span class="n">R</span><span class="p">,</span> <span class="n">s</span>
+
+<span class="c1"># compare three algorithm</span>
+<span class="kn">from</span> <span class="nn">robust_graph</span> <span class="k">import</span> <span class="n">Schneider</span>
+<span class="kn">from</span> <span class="nn">robust_graph</span> <span class="k">import</span> <span class="n">WuHolme</span>
+<span class="kn">from</span> <span class="nn">robust_graph</span> <span class="k">import</span> <span class="n">IchinoseSatotani</span>
+
+<span class="c1"># useful to build graph in the paper,</span>
+<span class="c1"># [Onion structure and network robustness]</span>
+<span class="kn">from</span> <span class="nn">robust_graph</span> <span class="k">import</span> <span class="n">scale_free_network</span>
+
+<span class="c1"># base class to optimize graph robustness</span>
+<span class="kn">from</span> <span class="nn">robust_graph</span> <span class="k">import</span> <span class="n">Optimizer</span>
+
+<span class="c1"># this optimization algorithm does nothing</span>
+<span class="c1"># so we can calculate original graph&#39;s s(q)</span>
+<span class="k">class</span> <span class="nc">Original</span><span class="p">(</span><span class="n">Optimizer</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_update_one_step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">graph</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="n">graph</span>
+
+<span class="n">n_nodes</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">n_graphs</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">n_attacks</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;robustness_comparison.csv&#39;</span>
+<span class="c1"># optimizer dictionary (column -&gt; (opt_class, log_level, force_update,</span>
+<span class="c1">#                                  configs, steps))</span>
+<span class="n">optimizers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Original&#39;</span>  <span class="p">:</span> <span class="p">(</span><span class="n">Original</span><span class="p">,</span>         <span class="n">LOG_LEVEL</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span>
+                                 <span class="nb">dict</span><span class="p">(),</span>                <span class="mi">1</span><span class="p">),</span>
+
+    <span class="s1">&#39;Schneider&#39;</span> <span class="p">:</span> <span class="p">(</span><span class="n">Schneider</span><span class="p">,</span>        <span class="n">LOG_LEVEL</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span>
+                                  <span class="nb">dict</span><span class="p">(</span><span class="n">max_trials</span><span class="o">=</span><span class="mi">100</span><span class="p">),</span> <span class="mi">100</span><span class="p">),</span>
+
+    <span class="s1">&#39;Holme&#39;</span>     <span class="p">:</span> <span class="p">(</span><span class="n">WuHolme</span><span class="p">,</span>          <span class="n">LOG_LEVEL</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span>
+                                  <span class="nb">dict</span><span class="p">(),</span>                <span class="mi">1</span><span class="p">),</span>
+
+    <span class="s1">&#39;Ichinose&#39;</span>  <span class="p">:</span> <span class="p">(</span><span class="n">IchinoseSatotani</span><span class="p">,</span> <span class="n">LOG_LEVEL</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span>
+                                  <span class="nb">dict</span><span class="p">(</span><span class="n">greedy</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>    <span class="mi">100</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">result_s</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">optimizers</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span>
+                    <span class="p">[[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">n_nodes</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">optimizers</span><span class="p">)))</span>
+
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_graphs</span><span class="p">):</span>
+    <span class="c1"># build graph and optimize with each algorithm</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="n">scale_free_network</span><span class="p">(</span><span class="n">n_nodes</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">params</span> <span class="ow">in</span> <span class="n">optimizers</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">opt_cls</span><span class="p">,</span> <span class="n">log_level</span><span class="p">,</span> <span class="n">force_update</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">steps</span> <span class="o">=</span> <span class="n">params</span>
+        <span class="n">optimizer</span> <span class="o">=</span> <span class="n">opt_cls</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">log_level</span><span class="p">,</span> <span class="n">force_update</span><span class="p">,</span> <span class="o">**</span><span class="n">config</span><span class="p">)</span>
+        <span class="n">optimized</span> <span class="o">=</span> <span class="n">optimizer</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">steps</span><span class="p">)</span>
+        <span class="c1"># the following three lines do:</span>
+        <span class="c1">#    s[name] += s(optimized) * n_attacks</span>
+        <span class="n">result_s</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">sum</span><span class="p">,</span>
+            <span class="nb">zip</span><span class="p">(</span><span class="n">result_s</span><span class="p">[</span><span class="n">name</span><span class="p">],</span>
+                <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="n">e</span><span class="o">*</span><span class="n">n_attacks</span><span class="p">,</span> <span class="n">s</span><span class="p">(</span><span class="n">optimized</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">n_attacks</span><span class="p">))))</span>
+
+<span class="c1"># convert result_s sum of s(q) -&gt; average of s(q)</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">result_s</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">result_s</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span> <span class="o">/</span> <span class="p">(</span><span class="n">n_graphs</span><span class="o">*</span><span class="n">n_attacks</span><span class="p">),</span> <span class="n">v</span><span class="p">)</span>
+
+<span class="c1"># build csv text with header column (q)</span>
+<span class="n">csvtxt</span> <span class="o">=</span> <span class="s1">&#39;q,&#39;</span><span class="o">+</span><span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">result_s</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span>\
+         <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">l</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">%d</span><span class="s1">,&#39;</span><span class="o">%</span><span class="n">l</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">l</span><span class="p">[</span><span class="mi">1</span><span class="p">])),</span>
+                       <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">result_s</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span> <span class="mi">1</span><span class="p">)</span>
+         <span class="p">))</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+    <span class="n">fp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">csvtxt</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="speed-comparison">
+<h2>Speed Comparison<a class="headerlink" href="#speed-comparison" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">robust_graph</span> <span class="k">import</span> <span class="n">R</span>
+<span class="kn">from</span> <span class="nn">robust_graph</span> <span class="k">import</span> <span class="n">LOG_LEVEL_INFO</span> <span class="k">as</span> <span class="n">LOG_LEVEL</span>
+<span class="kn">from</span> <span class="nn">robust_graph</span> <span class="k">import</span> <span class="n">TimeTracker</span>
+
+<span class="c1"># compare two algorithms</span>
+<span class="kn">from</span> <span class="nn">robust_graph</span> <span class="k">import</span> <span class="n">Schneider</span><span class="p">,</span> <span class="n">IchinoseSatotani</span>
+
+<span class="c1"># function to load US airline network</span>
+<span class="kn">from</span> <span class="nn">robust_graph.util</span> <span class="k">import</span> <span class="n">load_us</span>
+
+<span class="c1"># some important constants</span>
+<span class="n">n_attacks</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">n_steps</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">fileprefix</span> <span class="o">=</span> <span class="s1">&#39;speed_test&#39;</span>
+<span class="n">graph</span> <span class="o">=</span> <span class="n">load_us</span><span class="p">()</span>
+
+<span class="c1"># define columns in csv</span>
+<span class="n">columns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># R robustness</span>
+    <span class="p">(</span><span class="s1">&#39;R&#39;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">G</span><span class="p">:</span> <span class="n">R</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">n_attacks</span><span class="p">))</span>
+<span class="p">]</span>
+
+<span class="k">for</span> <span class="n">params</span> <span class="ow">in</span> <span class="p">[(</span><span class="n">Schneider</span><span class="p">,</span> <span class="nb">dict</span><span class="p">(</span><span class="n">log_level</span><span class="o">=</span><span class="n">LOG_LEVEL</span><span class="p">,</span> <span class="n">force_update</span><span class="o">=</span><span class="kc">True</span><span class="p">)),</span>
+               <span class="p">(</span><span class="n">IchinoseSatotani</span><span class="p">,</span> <span class="nb">dict</span><span class="p">(</span><span class="n">log_level</span><span class="o">=</span><span class="n">LOG_LEVEL</span><span class="p">,</span>
+                                       <span class="n">force_update</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                       <span class="n">greedy</span><span class="o">=</span><span class="kc">True</span><span class="p">))]:</span>
+    <span class="n">opt_cls</span><span class="p">,</span> <span class="n">config</span> <span class="o">=</span> <span class="n">params</span>
+    <span class="n">tracker</span> <span class="o">=</span> <span class="n">TimeTracker</span><span class="p">(</span><span class="n">opt_cls</span><span class="p">,</span> <span class="n">graph</span><span class="p">,</span> <span class="n">columns</span><span class="p">,</span><span class="o">**</span><span class="n">config</span><span class="p">)</span>
+    <span class="n">tracker</span><span class="o">.</span><span class="n">track</span><span class="p">(</span><span class="n">steps</span><span class="o">=</span><span class="n">n_steps</span><span class="p">)</span>
+    <span class="n">tracker</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">fileprefix</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="n">opt_cls</span><span class="o">.</span><span class="n">__name__</span> <span class="o">+</span> <span class="s1">&#39;.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="robustness-vs-degree-correlation">
+<h2>Robustness vs Degree Correlation<a class="headerlink" href="#robustness-vs-degree-correlation" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">from</span> <span class="nn">robust_graph</span> <span class="k">import</span> <span class="n">R</span>
+<span class="kn">from</span> <span class="nn">robust_graph</span> <span class="k">import</span> <span class="n">LOG_LEVEL_INFO</span> <span class="k">as</span> <span class="n">LOG_LEVEL</span>
+<span class="kn">from</span> <span class="nn">robust_graph</span> <span class="k">import</span> <span class="n">TimeTracker</span>
+
+<span class="c1"># an algorithm</span>
+<span class="kn">from</span> <span class="nn">robust_graph</span> <span class="k">import</span> <span class="n">IchinoseSatotani</span>
+
+<span class="c1"># function to load US airline network</span>
+<span class="kn">from</span> <span class="nn">robust_graph</span> <span class="k">import</span> <span class="n">load_us</span>
+
+<span class="c1"># some important constants</span>
+<span class="n">n_attacks</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">n_steps</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;Randr.csv&#39;</span>
+<span class="n">graph</span> <span class="o">=</span> <span class="n">load_us</span><span class="p">()</span>
+
+<span class="c1"># define columns in csv</span>
+<span class="n">columns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># R robustness</span>
+    <span class="p">(</span><span class="s1">&#39;R&#39;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">G</span><span class="p">:</span> <span class="n">R</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">n_attacks</span><span class="p">)),</span>
+    <span class="c1"># r degree correlation</span>
+    <span class="p">(</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">nx</span><span class="o">.</span><span class="n">degree_pearson_correlation_coefficient</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="c1"># use TimeTracker to track R and r</span>
+<span class="n">tracker</span> <span class="o">=</span> <span class="n">TimeTracker</span><span class="p">(</span><span class="n">IchinoseSatotani</span><span class="p">,</span> <span class="n">graph</span><span class="p">,</span> <span class="n">columns</span><span class="p">,</span>
+                      <span class="n">log_level</span><span class="o">=</span><span class="n">LOG_LEVEL</span><span class="p">,</span> <span class="n">force_update</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">greedy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">tracker</span><span class="o">.</span><span class="n">track</span><span class="p">(</span><span class="n">steps</span><span class="o">=</span><span class="n">n_steps</span><span class="p">)</span>
+<span class="n">tracker</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="drawing-onion-structure">
+<h2>Drawing Onion Structure<a class="headerlink" href="#drawing-onion-structure" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">networkx</span> <span class="k">import</span> <span class="n">star_graph</span>
+<span class="kn">from</span> <span class="nn">networkx.drawing</span> <span class="k">import</span> <span class="n">spring_layout</span>
+
+<span class="kn">from</span> <span class="nn">robust_graph.util</span> <span class="k">import</span> <span class="n">scale_free_network</span>
+<span class="kn">from</span> <span class="nn">robust_graph.util</span> <span class="k">import</span> <span class="n">save_graph_as_image</span>
+
+<span class="n">G</span> <span class="o">=</span> <span class="n">scale_free_network</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">avrdeg</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">save_graph_as_image</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s1">&#39;onion_layout.png&#39;</span><span class="p">)</span>
+<span class="n">save_graph_as_image</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s1">&#39;spring_layout.png&#39;</span><span class="p">,</span> <span class="n">spring_layout</span><span class="p">)</span>
+
+</pre></div>
+</td></tr></table></div>
+<p>The results shold be</p>
+<div class="figure align-center" id="id1">
+<img alt="_images/spring_layout.png" src="_images/spring_layout.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal"><span class="pre">spring_layout.png</span></code></span></p>
+</div>
+<p>and</p>
+<div class="figure align-center" id="id2">
+<img alt="_images/onion_layout.png" src="_images/onion_layout.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal"><span class="pre">onion_layout.png</span></code></span></p>
+</div>
+</div>
+<div class="section" id="small-test-code">
+<h2>Small Test Code<a class="headerlink" href="#small-test-code" title="Permalink to this headline">¶</a></h2>
+<p>This script tests</p>
+<ul class="simple">
+<li>4 types of algorithms</li>
+<li><a class="reference internal" href="robust_graph.html#robust_graph.optimizer.Optimizer" title="robust_graph.optimizer.Optimizer"><code class="xref py py-class docutils literal"><span class="pre">Optimizer</span></code></a> and <a class="reference internal" href="robust_graph.html#robust_graph.time_tracker.TimeTracker" title="robust_graph.time_tracker.TimeTracker"><code class="xref py py-class docutils literal"><span class="pre">TimeTracker</span></code></a></li>
+</ul>
+<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+<span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+
+<span class="c1"># robust measurement by schneider et.al.</span>
+<span class="kn">from</span> <span class="nn">robust_graph</span> <span class="k">import</span> <span class="n">s</span><span class="p">,</span> <span class="n">R</span>
+<span class="c1"># log level: what kind of information are to be printed</span>
+<span class="c1"># other options: VERBOSE, DEBUG, INFO, WARNING, ERROR</span>
+<span class="c1"># e.g. WARNING: print warning and error information</span>
+<span class="kn">from</span> <span class="nn">robust_graph</span> <span class="k">import</span> <span class="n">LOG_LEVEL_QUIET</span> <span class="k">as</span> <span class="n">LOG_LEVEL</span>
+<span class="c1"># 4 optimizers based on 4 different algorithms</span>
+<span class="kn">from</span> <span class="nn">robust_graph</span> <span class="k">import</span> <span class="n">Schneider</span><span class="p">,</span> <span class="n">WuHolme</span><span class="p">,</span> <span class="n">Sun</span><span class="p">,</span> <span class="n">IchinoseSatotani</span>
+<span class="c1"># measures certain index through optimization process</span>
+<span class="kn">from</span> <span class="nn">robust_graph</span> <span class="k">import</span> <span class="n">TimeTracker</span>
+<span class="c1"># function to load united states airline network</span>
+<span class="c1"># and make powerlaw-degree-distribution network</span>
+<span class="kn">from</span> <span class="nn">robust_graph</span> <span class="k">import</span> <span class="n">load_us</span><span class="p">,</span> <span class="n">scale_free_network</span>
+
+<span class="c1"># initialize graph object and algorithm object</span>
+<span class="n">G1</span> <span class="o">=</span> <span class="n">scale_free_network</span><span class="p">()</span>
+<span class="n">R1</span> <span class="o">=</span> <span class="n">R</span><span class="p">(</span><span class="n">G1</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># calculate 10 times to get more accurate result</span>
+
+<span class="c1"># use of optimizer</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;----- optimizer test -----&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;original R =&#39;</span><span class="p">,</span> <span class="n">R1</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">opt_cls</span> <span class="ow">in</span> <span class="p">[</span><span class="n">Schneider</span><span class="p">,</span> <span class="n">WuHolme</span><span class="p">,</span> <span class="n">IchinoseSatotani</span><span class="p">,</span> <span class="n">Sun</span><span class="p">]:</span>
+    <span class="c1"># still there are more options</span>
+    <span class="c1"># see robust_graph/optimize document</span>
+    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">opt_cls</span><span class="p">(</span><span class="n">G1</span><span class="p">,</span> <span class="n">log_level</span><span class="o">=</span><span class="n">LOG_LEVEL</span><span class="p">,</span> <span class="n">max_trials</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">G2</span> <span class="o">=</span> <span class="n">optimizer</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">steps</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">R2</span> <span class="o">=</span> <span class="n">R</span><span class="p">(</span><span class="n">G2</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;optimized by&#39;</span><span class="p">,</span> <span class="n">opt_cls</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span> <span class="s1">&#39;R =&#39;</span><span class="p">,</span> <span class="n">R2</span><span class="p">)</span>
+
+<span class="c1"># use of tracker</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;----- time tracker test -----&#39;</span><span class="p">)</span>
+<span class="c1"># measurements used in timetracker</span>
+<span class="n">cols</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;R&#39;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">G</span><span class="p">:</span> <span class="n">R</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">)),</span>                      <span class="c1"># R robustness</span>
+        <span class="p">(</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">nx</span><span class="o">.</span><span class="n">degree_pearson_correlation_coefficient</span><span class="p">),</span> <span class="c1"># r degree correlation</span>
+       <span class="p">]</span>
+<span class="c1"># WuHolme is not iterative algorithm</span>
+<span class="k">for</span> <span class="n">opt_cls</span> <span class="ow">in</span> <span class="p">[</span><span class="n">Schneider</span><span class="p">,</span> <span class="n">IchinoseSatotani</span><span class="p">]:</span>
+    <span class="c1"># options are given after columns(measurements)</span>
+    <span class="n">tracker</span> <span class="o">=</span> <span class="n">TimeTracker</span><span class="p">(</span><span class="n">opt_cls</span><span class="p">,</span> <span class="n">G1</span><span class="p">,</span> <span class="n">cols</span><span class="o">=</span><span class="n">cols</span><span class="p">,</span>
+                          <span class="n">log_level</span><span class="o">=</span><span class="n">LOG_LEVEL</span><span class="p">,</span> <span class="n">max_trials</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+    <span class="n">tracker</span><span class="o">.</span><span class="n">track</span><span class="p">(</span><span class="n">steps</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;tracked by&#39;</span><span class="p">,</span> <span class="n">opt_cls</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span> <span class="s1">&#39;algorithm...&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">tracker</span><span class="o">.</span><span class="n">dumps</span><span class="p">())</span>
+    <span class="c1"># tracker.dump(&#39;test.csv&#39;) # also, tracker can dump to file</span>
+
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Examples</a><ul>
+<li><a class="reference internal" href="#robustness-comparison">Robustness Comparison</a></li>
+<li><a class="reference internal" href="#speed-comparison">Speed Comparison</a></li>
+<li><a class="reference internal" href="#robustness-vs-degree-correlation">Robustness vs Degree Correlation</a></li>
+<li><a class="reference internal" href="#drawing-onion-structure">Drawing Onion Structure</a></li>
+<li><a class="reference internal" href="#small-test-code">Small Test Code</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="algorithms.html" title="previous chapter">Algorithms</a></li>
+      <li>Next: <a href="modules.html" title="next chapter">robust_graph</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      
+      
+      
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

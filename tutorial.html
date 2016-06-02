@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tutorial &mdash; robust-graph 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="robust-graph 0.1.0 documentation" href="index.html" />
+    <link rel="next" title="Algorithms" href="algorithms.html" />
+    <link rel="prev" title="Welcome to robust-graph’s documentation!" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="tutorial">
+<h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="optimizer-usage">
+<h2><a class="reference internal" href="robust_graph.html#robust_graph.optimizer.Optimizer" title="robust_graph.optimizer.Optimizer"><code class="xref py py-class docutils literal"><span class="pre">Optimizer</span></code></a> usage<a class="headerlink" href="#optimizer-usage" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="robust_graph.html#robust_graph.optimizer.Optimizer" title="robust_graph.optimizer.Optimizer"><code class="xref py py-class docutils literal"><span class="pre">Optimizer</span></code></a> is a framework of robustness optimize simulation.
+Algorithm is implemented in a subclass of <code class="xref py py-class docutils literal"><span class="pre">Optimizer</span></code> (e.g.
+<a class="reference internal" href="robust_graph.algorithms.html#robust_graph.algorithms.schneider.Schneider" title="robust_graph.algorithms.schneider.Schneider"><code class="xref py py-class docutils literal"><span class="pre">Schneider</span></code></a> and <a class="reference internal" href="robust_graph.algorithms.html#robust_graph.algorithms.ichinose_satotani.IchinoseSatotani" title="robust_graph.algorithms.ichinose_satotani.IchinoseSatotani"><code class="xref py py-class docutils literal"><span class="pre">IchinoseSatotani</span></code></a>.)</p>
+<p>To create Optimizer object, you have to give</p>
+<ol class="arabic simple">
+<li><code class="xref py py-class docutils literal"><span class="pre">networkx.Graph</span></code> object</li>
+<li>Log level defined in <a class="reference internal" href="robust_graph.html#module-robust_graph.log_level" title="robust_graph.log_level"><code class="xref py py-mod docutils literal"><span class="pre">log_level</span></code></a></li>
+<li>Force update flag: accept update even if it is incomplete</li>
+<li>Configuration parameters, see <code class="xref py py-class docutils literal"><span class="pre">Optimzier</span></code> and its subclasses</li>
+</ol>
+<p>For example (using <a class="reference internal" href="robust_graph.algorithms.html#robust_graph.algorithms.schneider.Schneider" title="robust_graph.algorithms.schneider.Schneider"><code class="xref py py-class docutils literal"><span class="pre">Schneider</span></code></a>),</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">Schneider</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span>
+                      <span class="n">log_level</span><span class="o">=</span><span class="n">LOG_LEVEL_INFO</span><span class="p">,</span>
+                      <span class="n">force_update</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                      <span class="n">max_trials</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>After initialization has done, you can see</p>
+<ul class="simple">
+<li>How many optimization steps are passed</li>
+<li>What is a graph that optimizer holds currently</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span> <span class="n">optimizer</span><span class="o">.</span><span class="n">current_step</span><span class="p">()</span>
+<span class="k">print</span> <span class="n">optimzier</span><span class="o">.</span><span class="n">current_graph</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>It&#8217;s time to optimize the graph.
+Call <code class="xref py py-meth docutils literal"><span class="pre">optimize()</span></code> to increase robustness.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">optimizer</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">steps</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Finally, you can see how robustness is increased.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">robust_graph</span> <span class="kn">import</span> <span class="n">R</span>
+<span class="k">print</span> <span class="n">R</span><span class="p">(</span><span class="n">optimizer</span><span class="o">.</span><span class="n">current_graph</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="timetracker-usage">
+<h2><a class="reference internal" href="robust_graph.html#robust_graph.time_tracker.TimeTracker" title="robust_graph.time_tracker.TimeTracker"><code class="xref py py-class docutils literal"><span class="pre">TimeTracker</span></code></a> usage<a class="headerlink" href="#timetracker-usage" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="robust_graph.html#robust_graph.time_tracker.TimeTracker" title="robust_graph.time_tracker.TimeTracker"><code class="xref py py-class docutils literal"><span class="pre">TimeTracker</span></code></a> is useful if you want</p>
+<ul class="simple">
+<li>see how fast is increment of robustness</li>
+<li>compare increment of robustness and degree correlation</li>
+</ul>
+<p>To initialize <code class="xref py py-class docutils literal"><span class="pre">TimeTracker</span></code> object, you have to give</p>
+<ul class="simple">
+<li>Subclass of <a class="reference internal" href="robust_graph.html#robust_graph.optimizer.Optimizer" title="robust_graph.optimizer.Optimizer"><code class="xref py py-class docutils literal"><span class="pre">Optimizer</span></code></a></li>
+<li>Graph to be optimized</li>
+<li>Graph measurements list</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">robust_graph</span> <span class="kn">import</span> <span class="n">R</span>
+<span class="kn">import</span> <span class="nn">networkx.degree_pearson_correlation_coefficient</span> <span class="kn">as</span> \
+<span class="nn">degree_correlation</span>
+
+<span class="n">cols</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;R&#39;</span><span class="p">,</span> <span class="n">R</span><span class="p">),</span>                  <span class="c1"># R robustness</span>
+        <span class="p">(</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">degree_correlation</span><span class="p">),</span> <span class="c1"># r degree correlation</span>
+       <span class="p">]</span>
+
+<span class="n">tracker</span> <span class="o">=</span> <span class="n">TimeTracker</span><span class="p">(</span><span class="n">Schneider</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">cols</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>After initialization, you can run optimization</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">tracker</span><span class="o">.</span><span class="n">track</span><span class="p">(</span><span class="n">steps</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>After optimization is done, make string of csv or save it to file.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span> <span class="n">tracker</span><span class="o">.</span><span class="n">dumps</span><span class="p">()</span>
+<span class="n">tracker</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="s1">&#39;result.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The result from <code class="xref py py-meth docutils literal"><span class="pre">dumps()</span></code> would be like:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">step</span><span class="p">,</span><span class="n">R</span><span class="p">,</span><span class="n">r</span>
+<span class="mi">0</span><span class="p">,</span><span class="mf">0.20966</span><span class="p">,</span><span class="o">-</span><span class="mf">0.145164333337</span>
+<span class="mi">1</span><span class="p">,</span><span class="mf">0.20934</span><span class="p">,</span><span class="o">-</span><span class="mf">0.145164333337</span>
+<span class="mi">2</span><span class="p">,</span><span class="mf">0.21567</span><span class="p">,</span><span class="o">-</span><span class="mf">0.146778584336</span>
+</pre></div>
+</div>
+<p>Also, you can use following methods</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">tracker</span><span class="o">.</span><span class="n">current_graph</span><span class="p">()</span>
+<span class="n">tracker</span><span class="o">.</span><span class="n">current_step</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="custom-optimizer">
+<h2>Custom Optimizer<a class="headerlink" href="#custom-optimizer" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Lack of eagerness. I write if someone insists.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Tutorial</a><ul>
+<li><a class="reference internal" href="#optimizer-usage"><code class="docutils literal"><span class="pre">Optimizer</span></code> usage</a></li>
+<li><a class="reference internal" href="#timetracker-usage"><code class="docutils literal"><span class="pre">TimeTracker</span></code> usage</a></li>
+<li><a class="reference internal" href="#custom-optimizer">Custom Optimizer</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Welcome to robust-graph&#8217;s documentation!</a></li>
+      <li>Next: <a href="algorithms.html" title="next chapter">Algorithms</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      
+      
+      
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Algorithms &mdash; robust-graph 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="robust-graph 0.1.0 documentation" href="index.html" />
+    <link rel="next" title="Examples" href="examples.html" />
+    <link rel="prev" title="Tutorial" href="tutorial.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="algorithms">
+<h1>Algorithms<a class="headerlink" href="#algorithms" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="schneider-et-al">
+<h2>Schneider et al.<a class="headerlink" href="#schneider-et-al" title="Permalink to this headline">¶</a></h2>
+<p>Class reference:
+<a class="reference internal" href="robust_graph.algorithms.html#robust_graph.algorithms.schneider.Schneider" title="robust_graph.algorithms.schneider.Schneider"><code class="xref py py-class docutils literal"><span class="pre">Schneider</span></code></a></p>
+<ol class="arabic simple">
+<li>Select a pair of edges randomly and swap them</li>
+<li>If it has higher R, accept the swapping</li>
+<li>If not, try to swap again</li>
+</ol>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="index.html#schneider2011" id="id1">[SMA+11]</a></p>
+</div>
+<p>Configure parameters:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="14%" />
+<col width="66%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>max_trials</td>
+<td>100</td>
+<td>The maximum number of swap trials</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="wu-and-holme">
+<h2>Wu and Holme<a class="headerlink" href="#wu-and-holme" title="Permalink to this headline">¶</a></h2>
+<p>Class reference:
+<a class="reference internal" href="robust_graph.algorithms.html#robust_graph.algorithms.wu_holme.WuHolme" title="robust_graph.algorithms.wu_holme.WuHolme"><code class="xref py py-class docutils literal"><span class="pre">WuHolme</span></code></a></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Too difficult to understand. I quit.</p>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="index.html#holme2002" id="id2">[HKYH02]</a></p>
+</div>
+<p>Configure parameters:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="14%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>max_trials</td>
+<td>100</td>
+<td>The maximum number of join process</td>
+</tr>
+<tr class="row-odd"><td>a</td>
+<td>3</td>
+<td>Parameter in equation</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="sun-et-al">
+<h2>Sun et al.<a class="headerlink" href="#sun-et-al" title="Permalink to this headline">¶</a></h2>
+<p>Class reference:
+<a class="reference internal" href="robust_graph.algorithms.html#robust_graph.algorithms.sun.Sun" title="robust_graph.algorithms.sun.Sun"><code class="xref py py-class docutils literal"><span class="pre">Sun</span></code></a></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Too difficult to understand. I quit.</p>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="index.html#sun2016" id="id3">[SML+16]</a></p>
+</div>
+<p>Configure parameters:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="14%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>max_trials</td>
+<td>100</td>
+<td>The maximum number of join process</td>
+</tr>
+<tr class="row-odd"><td>Ng</td>
+<td>10</td>
+<td>The number of neighbor solutions</td>
+</tr>
+<tr class="row-even"><td>Nt</td>
+<td>6</td>
+<td>Length of tabu list</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="ichinose-et-al">
+<h2>Ichinose et al.<a class="headerlink" href="#ichinose-et-al" title="Permalink to this headline">¶</a></h2>
+<p>Class reference:
+<a class="reference internal" href="robust_graph.algorithms.html#robust_graph.algorithms.ichinose_satotani.IchinoseSatotani" title="robust_graph.algorithms.ichinose_satotani.IchinoseSatotani"><code class="xref py py-class docutils literal"><span class="pre">IchinoseSatotani</span></code></a></p>
+<p>This algorithm aims to improve both robustness and degree correlation.</p>
+<ol class="arabic">
+<li><p class="first">For each edges, calculate difference of degrees of endpoints defined as
+<img class="math" src="_images/math/417439c81ecd11d7f1e48088f1573cc8bba611f2.png" alt="\Delta_e = |k_i - k_j|"/>.</p>
+</li>
+<li><p class="first">Select two edges by performing roulette selection.</p>
+<div class="math">
+<p><img src="_images/math/ebc87e89890dc7a0491f58af9f3b67ac02693595.png" alt="p_e = \frac{\Delta_e}{\sum_{f \in E}\Delta_f}"/></p>
+</div></li>
+<li><p class="first">Perform double edge swap using selected edges.</p>
+</li>
+<li><p class="first">(Optional) for edges <img class="math" src="_images/math/ea396577e21019436fd9cffcd5f316bff45588b0.png" alt="(i, j)"/> and <img class="math" src="_images/math/308e91a320e272a2216158a4c6bede5e69bf0b6b.png" alt="(u, v)"/> are selected,
+there are two possible results(<img class="math" src="_images/math/cf49ffa83ce53b5fe20c3ef7429991b20e1b88a0.png" alt="(i, u), (j, v)"/> and
+<img class="math" src="_images/math/b33352edf011cf8fda2dc603376a8af7914010fa.png" alt="(i, v), (j, u)"/>) from double edge swapping.
+To increase network robustness and degree correlation, select</p>
+<div class="math">
+<p><img src="_images/math/bcfc7986324f4ca2647cefc0898c5eb490d4f12f.png" alt="\begin{cases}
+  ((i, u), (j, v)) &amp; (\Delta1 &lt; \Delta2) \\
+  ((i, v), (j, u)) &amp; (otherwise)
+\end{cases}"/></p>
+</div><p>where <img class="math" src="_images/math/cf3ba8c28f1d72e4af601b923bfa5c51eaaf2c63.png" alt="\Delta_1 = |k_i - k_u| + |k_j - k_v|"/> and
+<img class="math" src="_images/math/323bcf3aa9a090d5b3caa23ff072f7a02ae7c3b7.png" alt="\Delta_2 = |k_i - k_v| + |k_j - k_u|"/>.</p>
+</li>
+<li><p class="first">Accept swapping if there are no self loops, parallel edges,
+and not separated by swapping.</p>
+</li>
+</ol>
+<p>Configure parameters:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="13%" />
+<col width="68%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>max_trials</td>
+<td>100</td>
+<td>The maximum number of trials</td>
+</tr>
+<tr class="row-odd"><td>greedy</td>
+<td>False</td>
+<td>If true, always choose swap
+that makes higher degree correlation</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Algorithms</a><ul>
+<li><a class="reference internal" href="#schneider-et-al">Schneider et al.</a></li>
+<li><a class="reference internal" href="#wu-and-holme">Wu and Holme</a></li>
+<li><a class="reference internal" href="#sun-et-al">Sun et al.</a></li>
+<li><a class="reference internal" href="#ichinose-et-al">Ichinose et al.</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="tutorial.html" title="previous chapter">Tutorial</a></li>
+      <li>Next: <a href="examples.html" title="next chapter">Examples</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      
+      
+      
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
