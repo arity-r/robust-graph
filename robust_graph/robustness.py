@@ -4,23 +4,26 @@ import random
 
 def R(G, n=1):
     """
-    Notes
-    -----
-    This function computes Eq.[1] in Ref.[1]
+    Computes network robustness in :cite:`Schneider2011`.
 
-    References
-    ----------
-    .. [1]Schneider, C. M., Moreira, A. A., Andrade, J. S., Havlin, S., & Herrmann, H. J. (2011).
-    Mitigation of malicious attacks on networks.
-    Proceedings of the National Academy of Sciences, 108(10), 3838-3841.
-    .. [2] Herrmann, H. J., Schneider, C. M., Moreira, A. A., Andrade Jr, J. S., & Havlin, S. (2011).
-    Onion-like network topology enhances robustness against malicious attacks.
-    Journal of Statistical Mechanics: Theory and Experiment, 2011(01), P01027.
+    :param networkx.Graph G: The graph
+    :param int n: The number of iteration, increase to accurate result.
     """
-    N = len(G)
-    return sum(sum(map(s, [G]*n), []))/(N*n)
+    return sum(sum(map(_s, [G]*n), []))/(len(G)*n)
 
-def s(G):
+def s(G, n=1):
+    """
+    Computes network robustness in :cite:`Schneider2011`.
+
+    :param networkx.Graph G: The graph
+    :param int n: The number of iteration, increase to accurate result.
+    """
+    return map(lambda s: sum(s) / n, zip(*map(_s, [G]*n)))
+
+def _s(G):
+    """
+    Helper function for R and s.
+    """
     G = G.copy()
     N = len(G)
     S_q = []
