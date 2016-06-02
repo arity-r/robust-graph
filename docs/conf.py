@@ -36,7 +36,8 @@ extensions = ['sphinx.ext.intersphinx', 'sphinx.ext.autodoc',
 def linkcode_resolve(domain, info):
     if domain != 'py': return None
     if not info['module']: return None
-    return 'https://github.com/arity-r/robust-graph/%s.py'\
+    repo = 'https://github.com/arity-r/robust-graph/'
+    return repo + 'blob/master/%s.py'\
         %info['module'].replace('.', '/')
 
 intersphinx_mapping = {
