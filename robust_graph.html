@@ -140,7 +140,7 @@
 </div>
 <dl class="function">
 <dt id="robust_graph.log_level.print_log_header">
-<code class="descclassname">robust_graph.log_level.</code><code class="descname">print_log_header</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/robust_graph/log_level.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.log_level.print_log_header" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">robust_graph.log_level.</code><code class="descname">print_log_header</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/blob/master/robust_graph/log_level.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.log_level.print_log_header" title="Permalink to this definition">¶</a></dt>
 <dd><p>shows header row:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">timestamp</span><span class="p">,</span><span class="n">loglevel</span><span class="p">,</span><span class="n">tag</span><span class="p">,</span><span class="n">message</span>
 </pre></div>
@@ -152,7 +152,7 @@
 <span id="robust-graph-optimizer-module"></span><h2>robust_graph.optimizer module<a class="headerlink" href="#module-robust_graph.optimizer" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="robust_graph.optimizer.Optimizer">
-<em class="property">class </em><code class="descclassname">robust_graph.optimizer.</code><code class="descname">Optimizer</code><span class="sig-paren">(</span><em>graph</em>, <em>log_level=0</em>, <em>force_update=True</em>, <em>**config</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/robust_graph/optimizer.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.optimizer.Optimizer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">robust_graph.optimizer.</code><code class="descname">Optimizer</code><span class="sig-paren">(</span><em>graph</em>, <em>log_level=0</em>, <em>force_update=True</em>, <em>**config</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/blob/master/robust_graph/optimizer.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.optimizer.Optimizer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
 <p>Abstract class of robust-optimize algorithm</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -171,7 +171,7 @@
 </table>
 <dl class="method">
 <dt id="robust_graph.optimizer.Optimizer._update_one_step">
-<code class="descname">_update_one_step</code><span class="sig-paren">(</span><em>graph</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/robust_graph/optimizer.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.optimizer.Optimizer._update_one_step" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_update_one_step</code><span class="sig-paren">(</span><em>graph</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/blob/master/robust_graph/optimizer.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.optimizer.Optimizer._update_one_step" title="Permalink to this definition">¶</a></dt>
 <dd><p>Optimize(update) robustness only one step.
 This function is not implemented and overwrite it in subclass.</p>
 <p>This function must return a 2-element tuple that has:</p>
@@ -195,7 +195,7 @@ This function is not implemented and overwrite it in subclass.</p>
 
 <dl class="method">
 <dt id="robust_graph.optimizer.Optimizer.current_graph">
-<code class="descname">current_graph</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/robust_graph/optimizer.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.optimizer.Optimizer.current_graph" title="Permalink to this definition">¶</a></dt>
+<code class="descname">current_graph</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/blob/master/robust_graph/optimizer.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.optimizer.Optimizer.current_graph" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a deep copy of graph which this optimizer holds currently.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -211,7 +211,7 @@ This function is not implemented and overwrite it in subclass.</p>
 
 <dl class="method">
 <dt id="robust_graph.optimizer.Optimizer.current_step">
-<code class="descname">current_step</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/robust_graph/optimizer.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.optimizer.Optimizer.current_step" title="Permalink to this definition">¶</a></dt>
+<code class="descname">current_step</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/blob/master/robust_graph/optimizer.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.optimizer.Optimizer.current_step" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the number of current steps.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -227,7 +227,7 @@ This function is not implemented and overwrite it in subclass.</p>
 
 <dl class="method">
 <dt id="robust_graph.optimizer.Optimizer.optimize">
-<code class="descname">optimize</code><span class="sig-paren">(</span><em>steps=1</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/robust_graph/optimizer.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.optimizer.Optimizer.optimize" title="Permalink to this definition">¶</a></dt>
+<code class="descname">optimize</code><span class="sig-paren">(</span><em>steps=1</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/blob/master/robust_graph/optimizer.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.optimizer.Optimizer.optimize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Optimize robustness of graph.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -250,7 +250,7 @@ This function is not implemented and overwrite it in subclass.</p>
 <span id="robust-graph-robustness-module"></span><h2>robust_graph.robustness module<a class="headerlink" href="#module-robust_graph.robustness" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="robust_graph.robustness.R">
-<code class="descclassname">robust_graph.robustness.</code><code class="descname">R</code><span class="sig-paren">(</span><em>G</em>, <em>n=1</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/robust_graph/robustness.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.robustness.R" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">robust_graph.robustness.</code><code class="descname">R</code><span class="sig-paren">(</span><em>G</em>, <em>n=1</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/blob/master/robust_graph/robustness.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.robustness.R" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes network robustness in <a class="reference internal" href="index.html#schneider2011" id="id1">[SMA+11]</a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -268,7 +268,7 @@ This function is not implemented and overwrite it in subclass.</p>
 
 <dl class="function">
 <dt id="robust_graph.robustness.s">
-<code class="descclassname">robust_graph.robustness.</code><code class="descname">s</code><span class="sig-paren">(</span><em>G</em>, <em>n=1</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/robust_graph/robustness.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.robustness.s" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">robust_graph.robustness.</code><code class="descname">s</code><span class="sig-paren">(</span><em>G</em>, <em>n=1</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/blob/master/robust_graph/robustness.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.robustness.s" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes network robustness in <a class="reference internal" href="index.html#schneider2011" id="id2">[SMA+11]</a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -289,7 +289,7 @@ This function is not implemented and overwrite it in subclass.</p>
 <span id="robust-graph-time-tracker-module"></span><h2>robust_graph.time_tracker module<a class="headerlink" href="#module-robust_graph.time_tracker" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="robust_graph.time_tracker.TimeTracker">
-<em class="property">class </em><code class="descclassname">robust_graph.time_tracker.</code><code class="descname">TimeTracker</code><span class="sig-paren">(</span><em>opt_class</em>, <em>graph</em>, <em>cols=[]</em>, <em>**config</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/robust_graph/time_tracker.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.time_tracker.TimeTracker" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">robust_graph.time_tracker.</code><code class="descname">TimeTracker</code><span class="sig-paren">(</span><em>opt_class</em>, <em>graph</em>, <em>cols=[]</em>, <em>**config</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/blob/master/robust_graph/time_tracker.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.time_tracker.TimeTracker" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
 <p>TimeTracker constructor</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -308,7 +308,7 @@ This function is not implemented and overwrite it in subclass.</p>
 </table>
 <dl class="method">
 <dt id="robust_graph.time_tracker.TimeTracker.current_graph">
-<code class="descname">current_graph</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/robust_graph/time_tracker.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.time_tracker.TimeTracker.current_graph" title="Permalink to this definition">¶</a></dt>
+<code class="descname">current_graph</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/blob/master/robust_graph/time_tracker.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.time_tracker.TimeTracker.current_graph" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a deep copy of graph which this tracker holds currently.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -324,7 +324,7 @@ This function is not implemented and overwrite it in subclass.</p>
 
 <dl class="method">
 <dt id="robust_graph.time_tracker.TimeTracker.current_step">
-<code class="descname">current_step</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/robust_graph/time_tracker.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.time_tracker.TimeTracker.current_step" title="Permalink to this definition">¶</a></dt>
+<code class="descname">current_step</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/blob/master/robust_graph/time_tracker.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.time_tracker.TimeTracker.current_step" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the number of current steps.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -340,7 +340,7 @@ This function is not implemented and overwrite it in subclass.</p>
 
 <dl class="method">
 <dt id="robust_graph.time_tracker.TimeTracker.dump">
-<code class="descname">dump</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/robust_graph/time_tracker.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.time_tracker.TimeTracker.dump" title="Permalink to this definition">¶</a></dt>
+<code class="descname">dump</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/blob/master/robust_graph/time_tracker.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.time_tracker.TimeTracker.dump" title="Permalink to this definition">¶</a></dt>
 <dd><p>Dump result to file as csv format</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -354,7 +354,7 @@ This function is not implemented and overwrite it in subclass.</p>
 
 <dl class="method">
 <dt id="robust_graph.time_tracker.TimeTracker.dumps">
-<code class="descname">dumps</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/robust_graph/time_tracker.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.time_tracker.TimeTracker.dumps" title="Permalink to this definition">¶</a></dt>
+<code class="descname">dumps</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/blob/master/robust_graph/time_tracker.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.time_tracker.TimeTracker.dumps" title="Permalink to this definition">¶</a></dt>
 <dd><p>Dump result as a csv string.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -370,7 +370,7 @@ This function is not implemented and overwrite it in subclass.</p>
 
 <dl class="method">
 <dt id="robust_graph.time_tracker.TimeTracker.rawdata">
-<code class="descname">rawdata</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/robust_graph/time_tracker.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.time_tracker.TimeTracker.rawdata" title="Permalink to this definition">¶</a></dt>
+<code class="descname">rawdata</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/blob/master/robust_graph/time_tracker.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.time_tracker.TimeTracker.rawdata" title="Permalink to this definition">¶</a></dt>
 <dd><p>Obtain tracker result as a dictionary</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -386,7 +386,7 @@ This function is not implemented and overwrite it in subclass.</p>
 
 <dl class="method">
 <dt id="robust_graph.time_tracker.TimeTracker.track">
-<code class="descname">track</code><span class="sig-paren">(</span><em>steps</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/robust_graph/time_tracker.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.time_tracker.TimeTracker.track" title="Permalink to this definition">¶</a></dt>
+<code class="descname">track</code><span class="sig-paren">(</span><em>steps</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/blob/master/robust_graph/time_tracker.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.time_tracker.TimeTracker.track" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run simulation on <a class="reference internal" href="#robust_graph.optimizer.Optimizer" title="robust_graph.optimizer.Optimizer"><code class="xref py py-class docutils literal"><span class="pre">Optimizer</span></code></a> and store results on every steps.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -405,7 +405,7 @@ This function is not implemented and overwrite it in subclass.</p>
 <span id="robust-graph-util-module"></span><h2>robust_graph.util module<a class="headerlink" href="#module-robust_graph.util" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="robust_graph.util.load_us">
-<code class="descclassname">robust_graph.util.</code><code class="descname">load_us</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/robust_graph/util.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.util.load_us" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">robust_graph.util.</code><code class="descname">load_us</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/blob/master/robust_graph/util.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.util.load_us" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load US airline network.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -421,7 +421,7 @@ This function is not implemented and overwrite it in subclass.</p>
 
 <dl class="function">
 <dt id="robust_graph.util.onion_layout">
-<code class="descclassname">robust_graph.util.</code><code class="descname">onion_layout</code><span class="sig-paren">(</span><em>G</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/robust_graph/util.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.util.onion_layout" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">robust_graph.util.</code><code class="descname">onion_layout</code><span class="sig-paren">(</span><em>G</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/blob/master/robust_graph/util.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.util.onion_layout" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find node positions for onion-like topology</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -439,7 +439,7 @@ This function is not implemented and overwrite it in subclass.</p>
 
 <dl class="function">
 <dt id="robust_graph.util.powerlaw_sequence">
-<code class="descclassname">robust_graph.util.</code><code class="descname">powerlaw_sequence</code><span class="sig-paren">(</span><em>n</em>, <em>gamma</em>, <em>avrdeg</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/robust_graph/util.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.util.powerlaw_sequence" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">robust_graph.util.</code><code class="descname">powerlaw_sequence</code><span class="sig-paren">(</span><em>n</em>, <em>gamma</em>, <em>avrdeg</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/blob/master/robust_graph/util.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.util.powerlaw_sequence" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate power-law degree sequence by pareto distribution.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -464,7 +464,7 @@ This function is not implemented and overwrite it in subclass.</p>
 
 <dl class="function">
 <dt id="robust_graph.util.save_graph_as_image">
-<code class="descclassname">robust_graph.util.</code><code class="descname">save_graph_as_image</code><span class="sig-paren">(</span><em>G</em>, <em>filename</em>, <em>layout=&lt;function onion_layout&gt;</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/robust_graph/util.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.util.save_graph_as_image" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">robust_graph.util.</code><code class="descname">save_graph_as_image</code><span class="sig-paren">(</span><em>G</em>, <em>filename</em>, <em>layout=&lt;function onion_layout&gt;</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/blob/master/robust_graph/util.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.util.save_graph_as_image" title="Permalink to this definition">¶</a></dt>
 <dd><p>Save given graph as image.
 Node colors represent each degree of its node.
 Edges are shown as solid line if degrees of
@@ -488,7 +488,7 @@ two incident nodes are same, otherwise, dash.</p>
 
 <dl class="function">
 <dt id="robust_graph.util.scale_free_network">
-<code class="descclassname">robust_graph.util.</code><code class="descname">scale_free_network</code><span class="sig-paren">(</span><em>n=100</em>, <em>gamma=2.5</em>, <em>avrdeg=8</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/robust_graph/util.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.util.scale_free_network" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">robust_graph.util.</code><code class="descname">scale_free_network</code><span class="sig-paren">(</span><em>n=100</em>, <em>gamma=2.5</em>, <em>avrdeg=8</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/arity-r/robust-graph/blob/master/robust_graph/util.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#robust_graph.util.scale_free_network" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generates a scale free network by configuration model,
 which is shown in [Wu2011]</p>
 <table class="docutils field-list" frame="void" rules="none">
