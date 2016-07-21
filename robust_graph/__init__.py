@@ -11,4 +11,6 @@ from .algorithms import IchinoseSatotani
 
 from .util import load_us
 from .util import scale_free_network
-#from .util import save_graph_as_image
+
+#from .draw import onion_layout
+#from .draw import save_graph_as_image
