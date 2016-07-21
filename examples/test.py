@@ -22,11 +22,11 @@ R1 = R(G1, n=10) # calculate 10 times to get more accurate result
 # use of optimizer
 print('----- optimizer test -----')
 print('original R =', R1)
-for opt_cls in [Schneider, WuHolme, IchinoseSatotani, Sun]:
+for opt_cls in [Schneider, WuHolme, IchinoseSatotani]:
     # still there are more options
     # see robust_graph/optimize document
     optimizer = opt_cls(G1, log_level=LOG_LEVEL, max_trials=10)
-    G2 = optimizer.optimize(steps=1)
+    G2 = optimizer.optimize(steps=100)
     R2 = R(G2, n=10)
     print('optimized by', opt_cls.__name__, 'R =', R2)
 

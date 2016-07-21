@@ -15,27 +15,31 @@ class Schneider(Optimizer):
     :param bool force_update: If True, accept update
         even if :func:`~_update_one_step` claims imcomplete result
     :param int max_trials: The maximum number of trials for swapping
+    :param int n_attacks: The number of attacks per comparison of R
     """
     def __init__(self, graph,
                 log_level=LOG_LEVEL_QUIET,
                  force_update=True,
-                 max_trials=100):
+                 max_trials=100,
+                 n_attacks=1):
         super(Schneider, self).__init__(
             graph, log_level, force_update,
-            max_trials=max_trials)
+            max_trials=max_trials,
+            n_attacks=n_attacks)
 
     def _update_one_step(self, G):
         max_trials = self._config['max_trials']
+        n_attacks = self._config['n_attacks']
 
         success = False
-        Gorig, Rorig = G, R(G)
+        Gorig, Rorig = G, R(G, n=n_attacks)
         Gnew, Rnew = Gorig, Rorig
 
         trials = 0
         while trials != max_trials:
             trials += 1
             Gnew = nx.double_edge_swap(Gorig.copy())
-            Rnew = R(Gnew)
+            Rnew = R(Gnew, n=n_attacks)
             self.log_v(
                 'compare R ({0:3f} and {1:3f} at {2:d} trial)'
                 .format(Rorig, Rnew, trials)
