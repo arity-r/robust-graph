@@ -90,11 +90,9 @@ class Optimizer(object):
                 )
                 continue
 
-            currentR = R(self.current_graph())
-            newR = R(optimized_graph)
             self.log_i(
-                'update robustness {0:3f} -> {1:3f} at {2:d} step'
-                .format(currentR, newR, self.current_step())
+                'update robustness at {0:d} step'
+                .format(self.current_step())
             )
 
             self._graph = optimized_graph

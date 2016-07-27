@@ -2,7 +2,7 @@ from __future__ import division, absolute_import
 import random
 import networkx as nx
 from robust_graph import R
-from robust_graph import LOG_LEVEL_QUIET
+from robust_graph import LOG_LEVEL_QUIET, LOG_LEVEL_VERBOSE
 from robust_graph import Optimizer
 
 class IchinoseSatotani(Optimizer):
@@ -28,7 +28,8 @@ class IchinoseSatotani(Optimizer):
         max_trials = self._config['max_trials']
         is_greedy = self._config['greedy']
 
-        Rorig = R(G)
+        if self._log_level == LOG_LEVEL_VERBOSE: # HACK
+            Rorig = R(G)
 
         trials = 0
         is_success = False
@@ -57,11 +58,12 @@ class IchinoseSatotani(Optimizer):
                 break
 
         if is_success:
-            Rnew = R(G)
-            self.log_v(
-                'optimize success R = {0:3f} -> {1:3f} after {2:d} trials'
-                .format(Rorig, Rnew, trials)
-            )
+            if self._log_level == LOG_LEVEL_VERBOSE: # HACK
+                Rnew = R(G)
+                self.log_v(
+                    'optimize success R = {0:3f} -> {1:3f} after {2:d} trials'
+                    .format(Rorig, Rnew, trials)
+                )
         else:
             self.log_v(
                 'optimize failed after {0:d} trials'

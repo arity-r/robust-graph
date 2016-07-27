@@ -1,7 +1,7 @@
 from __future__ import division, absolute_import
 import random, networkx as nx
 from robust_graph import R
-from robust_graph import LOG_LEVEL_QUIET
+from robust_graph import LOG_LEVEL_QUIET, LOG_LEVEL_VERBOSE
 from robust_graph import Optimizer
 
 class WuHolme(Optimizer):
@@ -40,7 +40,8 @@ class WuHolme(Optimizer):
         max_trials = self._config['max_trials']
         a = self._config['a']
 
-        Rorig = R(G)
+        if self._log_level == LOG_LEVEL_VERBOSE: # HACK
+            Rorig = R(G)
 
         deg = G.degree()
         G = nx.Graph()
@@ -51,8 +52,8 @@ class WuHolme(Optimizer):
         stubs = list(zip(stubs, layer))
 
         trials = 0
-        while trials < max_trials and len(stubs) > 0\
-              or len(G.edges()) == 0:
+        while trials < max_trials and len(stubs) > 0 or\
+              len(G.edges()) == 0:
             trials += 1
             # 0 --> vertex, 1 --> layer index
             (i, si), (j, sj) = random.sample(stubs, 2)
@@ -69,11 +70,12 @@ class WuHolme(Optimizer):
 
         # no further stabs
         if len(stubs) == 0:
-            Rnew = R(G)
-            self.log_v(
-                'optimize success R = {0:3f} -> {1:3f} after {2:d} trials'
-                .format(Rorig, Rnew, trials)
-            )
+            if self._log_level == LOG_LEVEL_VERBOSE: # HACK
+                Rnew = R(G)
+                self.log_v(
+                    'optimize success R = {0:3f} -> {1:3f} after {2:d} trials'
+                    .format(Rorig, Rnew, trials)
+                )
             return True, G
 
         self.log_v(
@@ -104,11 +106,12 @@ class WuHolme(Optimizer):
                 .format(trials)
             )
         else:
-            Rnew = R(G)
-            self.log_v(
-                'optimize success R = {0:3f} -> {1:3f} after {2:d} trials'
-                .format(Rorig, Rnew, trials)
-            )
+            if self._log_level == LOG_LEVEL_VERBOSE: # HACK
+                Rnew = R(G)
+                self.log_v(
+                    'optimize success R = {0:3f} -> {1:3f} after {2:d} trials'
+                    .format(Rorig, Rnew, trials)
+                )
             self._graph = G
         return self.current_graph()
 
